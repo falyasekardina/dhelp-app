@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0341AE402619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */; };
+		0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE422619BB3300FFC68E /* DailyInTake.swift */; };
 		039024802616268C00BEE919 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0390247F2616268C00BEE919 /* AppDelegate.swift */; };
 		039024822616268C00BEE919 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024812616268C00BEE919 /* SceneDelegate.swift */; };
 		039024872616268C00BEE919 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 039024852616268C00BEE919 /* Main.storyboard */; };
@@ -21,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		0341AE422619BB3300FFC68E /* DailyInTake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyInTake.swift; sourceTree = "<group>"; };
 		0390247C2616268C00BEE919 /* DhelpApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DhelpApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0390247F2616268C00BEE919 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		039024812616268C00BEE919 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				039024A726162DF900BEE919 /* Ingredient.swift */,
+				0341AE422619BB3300FFC68E /* DailyInTake.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				0390249F26162B3700BEE919 /* HomeViewController.swift */,
+				0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -203,9 +209,11 @@
 			files = (
 				039024802616268C00BEE919 /* AppDelegate.swift in Sources */,
 				039024822616268C00BEE919 /* SceneDelegate.swift in Sources */,
+				0341AE402619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift in Sources */,
 				039024A826162DF900BEE919 /* Ingredient.swift in Sources */,
 				039024B026162FFA00BEE919 /* HistoryViewController.swift in Sources */,
 				039024B42616300300BEE919 /* ProfileViewController.swift in Sources */,
+				0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */,
 				0390248A2616268C00BEE919 /* DhelpApp.xcdatamodeld in Sources */,
 				039024A026162B3700BEE919 /* HomeViewController.swift in Sources */,
 			);
