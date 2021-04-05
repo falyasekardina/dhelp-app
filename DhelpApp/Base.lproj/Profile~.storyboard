@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="i0F-Ig-OZd">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fbh-DL-Nbh">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="7gD-SJ-WVO" customClass="ProfileViewController" customModule="DhelpApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8cY-bn-z72">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile Page" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUZ-y1-vQb">
-                                <rect key="frame" x="20" y="438" width="374" height="20"/>
+                                <rect key="frame" x="20" y="438" width="350" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -37,6 +37,26 @@
             </objects>
             <point key="canvasLocation" x="2305.7971014492755" y="961.60714285714278"/>
         </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="dbv-l7-BhY">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="fbh-DL-Nbh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Oxr-RD-7aS">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Eeg-Ea-ygx" kind="relationship" relationship="viewControllers" id="XJL-za-8gl"/>
+                        <segue destination="RVF-B9-BU6" kind="relationship" relationship="viewControllers" id="u50-2V-RJA"/>
+                        <segue destination="i0F-Ig-OZd" kind="relationship" relationship="viewControllers" id="66F-eN-Z77"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="az9-O4-VZG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-197" y="90"/>
+        </scene>
         <!--Profile-->
         <scene sceneID="Nqb-zr-mmM">
             <objects>
@@ -44,7 +64,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="QOa-3H-zAu"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sNJ-MN-pnb">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="390" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -55,6 +75,26 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="njo-q5-jMG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1541" y="962"/>
+        </scene>
+        <!--UINavigationController-BAt-Hd-Vi9-->
+        <scene sceneID="u5o-5K-uvK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Home" referencedIdentifier="UINavigationController-BAt-Hd-Vi9" id="Eeg-Ea-ygx" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="NF6-vw-bG5"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tJB-Ly-0dM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1878" y="963"/>
+        </scene>
+        <!--History-->
+        <scene sceneID="7Yj-d8-mH5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="History" id="RVF-B9-BU6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Tnh-gm-v3P"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V2d-oK-kS2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-197" y="962"/>
         </scene>
     </scenes>
     <resources>
