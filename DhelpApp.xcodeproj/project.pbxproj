@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0341AE402619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */; };
 		0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE422619BB3300FFC68E /* DailyInTake.swift */; };
+		036C8068261AC95C002A5EEA /* ListInputMealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */; };
 		039024802616268C00BEE919 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0390247F2616268C00BEE919 /* AppDelegate.swift */; };
 		039024822616268C00BEE919 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024812616268C00BEE919 /* SceneDelegate.swift */; };
 		039024872616268C00BEE919 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 039024852616268C00BEE919 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0341AE422619BB3300FFC68E /* DailyInTake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyInTake.swift; sourceTree = "<group>"; };
+		036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInputMealsTableViewController.swift; sourceTree = "<group>"; };
 		0390247C2616268C00BEE919 /* DhelpApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DhelpApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0390247F2616268C00BEE919 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		039024812616268C00BEE919 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		036C8066261AC929002A5EEA /* ListInputMeals */ = {
+			isa = PBXGroup;
+			children = (
+				036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */,
+			);
+			path = ListInputMeals;
+			sourceTree = "<group>";
+		};
 		039024732616268C00BEE919 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +114,7 @@
 		039024AA26162E6B00BEE919 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				036C8066261AC929002A5EEA /* ListInputMeals */,
 				039024AE26162FEC00BEE919 /* Profile */,
 				039024AD26162FDD00BEE919 /* History */,
 				039024AB26162E8200BEE919 /* Home */,
@@ -212,6 +223,7 @@
 				0341AE402619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift in Sources */,
 				039024A826162DF900BEE919 /* Ingredient.swift in Sources */,
 				039024B026162FFA00BEE919 /* HistoryViewController.swift in Sources */,
+				036C8068261AC95C002A5EEA /* ListInputMealsTableViewController.swift in Sources */,
 				039024B42616300300BEE919 /* ProfileViewController.swift in Sources */,
 				0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */,
 				0390248A2616268C00BEE919 /* DhelpApp.xcdatamodeld in Sources */,

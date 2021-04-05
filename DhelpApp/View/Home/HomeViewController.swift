@@ -17,11 +17,28 @@ class HomeViewController: UIViewController {
         DailyInTake(title: "Snack", mealLogo: UIImage(named: "snack")!, total: "0gr")
     ]
 
-    // Widget
+    // Component
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var informationView: UIView!
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBAction func addBtn(_ sender: UIButton) {
+        let optionMenu = UIAlertController(title: nil, message: "Please choose your input preferences", preferredStyle: .actionSheet)
+        let byIngredients = UIAlertAction(title: "By Ingredient", style: .default) { action in
+            print("By ingredient")
+        }
+        let manualInput = UIAlertAction(title: "Manual Input", style: .default) { action in
+            print("Manual Input")
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        optionMenu.addAction(byIngredients)
+        optionMenu.addAction(manualInput)
+        optionMenu.addAction(cancelAction)
+        optionMenu.view.addSubview(UIView())
+        self.present(optionMenu, animated: false)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +110,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(self.dailyInTakes[indexPath.row])
+        let view = storyboard?.instantiateViewController(identifier: "ListInputMeals") as! ListInputMealsTableViewController
+        view.getTitle = dailyInTakes[indexPath.row].title
+        self.navigationController?.pushViewController(view, animated: true)
     }
     
     func setupCollectionViewCellLayout(cell: UICollectionViewCell)
