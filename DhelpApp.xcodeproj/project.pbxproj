@@ -10,6 +10,9 @@
 		0341AE402619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */; };
 		0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE422619BB3300FFC68E /* DailyInTake.swift */; };
 		036C8068261AC95C002A5EEA /* ListInputMealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */; };
+		038821CE261B245E00954DF3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038821CC261B245E00954DF3 /* Home.storyboard */; };
+		038821DD261B2E7F00954DF3 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038821DC261B2E7F00954DF3 /* History.storyboard */; };
+		038821E2261B2E9800954DF3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038821E0261B2E9800954DF3 /* Profile.storyboard */; };
 		039024802616268C00BEE919 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0390247F2616268C00BEE919 /* AppDelegate.swift */; };
 		039024822616268C00BEE919 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024812616268C00BEE919 /* SceneDelegate.swift */; };
 		039024872616268C00BEE919 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 039024852616268C00BEE919 /* Main.storyboard */; };
@@ -27,6 +30,9 @@
 		0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0341AE422619BB3300FFC68E /* DailyInTake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyInTake.swift; sourceTree = "<group>"; };
 		036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInputMealsTableViewController.swift; sourceTree = "<group>"; };
+		038821CD261B245E00954DF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DhelpApp/Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		038821DC261B2E7F00954DF3 /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		038821E1261B2E9800954DF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DhelpApp/Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		0390247C2616268C00BEE919 /* DhelpApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DhelpApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0390247F2616268C00BEE919 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		039024812616268C00BEE919 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,12 +59,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		036C8066261AC929002A5EEA /* ListInputMeals */ = {
+		038821D2261B28A100954DF3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */,
+				0341AE422619BB3300FFC68E /* DailyInTake.swift */,
 			);
-			path = ListInputMeals;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		038821D3261B28B000954DF3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				038821CC261B245E00954DF3 /* Home.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		038821D4261B28B600954DF3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0390249F26162B3700BEE919 /* HomeViewController.swift */,
+				0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		038821D5261B291500954DF3 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		038821D6261B291B00954DF3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				038821DC261B2E7F00954DF3 /* History.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		038821D7261B294900954DF3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				039024AF26162FFA00BEE919 /* HistoryViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		038821D8261B295300954DF3 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modal;
+			sourceTree = "<group>";
+		};
+		038821D9261B295800954DF3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				038821E0261B2E9800954DF3 /* Profile.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		038821DA261B295F00954DF3 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				039024B32616300300BEE919 /* ProfileViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		039024732616268C00BEE919 = {
@@ -81,8 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				0390249A2616275B00BEE919 /* JSON */,
-				039024972616273600BEE919 /* Model */,
-				039024AA26162E6B00BEE919 /* View */,
+				039024972616273600BEE919 /* ModelGlobal */,
+				039024AA26162E6B00BEE919 /* Pages */,
 				0390247F2616268C00BEE919 /* AppDelegate.swift */,
 				039024812616268C00BEE919 /* SceneDelegate.swift */,
 				039024852616268C00BEE919 /* Main.storyboard */,
@@ -94,13 +164,12 @@
 			path = DhelpApp;
 			sourceTree = "<group>";
 		};
-		039024972616273600BEE919 /* Model */ = {
+		039024972616273600BEE919 /* ModelGlobal */ = {
 			isa = PBXGroup;
 			children = (
 				039024A726162DF900BEE919 /* Ingredient.swift */,
-				0341AE422619BB3300FFC68E /* DailyInTake.swift */,
 			);
-			path = Model;
+			path = ModelGlobal;
 			sourceTree = "<group>";
 		};
 		0390249A2616275B00BEE919 /* JSON */ = {
@@ -111,22 +180,22 @@
 			path = JSON;
 			sourceTree = "<group>";
 		};
-		039024AA26162E6B00BEE919 /* View */ = {
+		039024AA26162E6B00BEE919 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				036C8066261AC929002A5EEA /* ListInputMeals */,
 				039024AE26162FEC00BEE919 /* Profile */,
 				039024AD26162FDD00BEE919 /* History */,
 				039024AB26162E8200BEE919 /* Home */,
 			);
-			path = View;
+			path = Pages;
 			sourceTree = "<group>";
 		};
 		039024AB26162E8200BEE919 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				0390249F26162B3700BEE919 /* HomeViewController.swift */,
-				0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */,
+				038821D4261B28B600954DF3 /* Controller */,
+				038821D3261B28B000954DF3 /* View */,
+				038821D2261B28A100954DF3 /* Model */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -134,7 +203,9 @@
 		039024AD26162FDD00BEE919 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				039024AF26162FFA00BEE919 /* HistoryViewController.swift */,
+				038821D7261B294900954DF3 /* Controller */,
+				038821D6261B291B00954DF3 /* View */,
+				038821D5261B291500954DF3 /* Modal */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -142,7 +213,9 @@
 		039024AE26162FEC00BEE919 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				039024B32616300300BEE919 /* ProfileViewController.swift */,
+				038821DA261B295F00954DF3 /* Controller */,
+				038821D9261B295800954DF3 /* View */,
+				038821D8261B295300954DF3 /* Modal */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -205,9 +278,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0390249C2616276C00BEE919 /* Ingredients.json in Resources */,
+				038821CE261B245E00954DF3 /* Home.storyboard in Resources */,
 				0390248F2616268D00BEE919 /* LaunchScreen.storyboard in Resources */,
 				0390248C2616268D00BEE919 /* Assets.xcassets in Resources */,
 				039024872616268C00BEE919 /* Main.storyboard in Resources */,
+				038821E2261B2E9800954DF3 /* Profile.storyboard in Resources */,
+				038821DD261B2E7F00954DF3 /* History.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +310,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		038821CC261B245E00954DF3 /* Home.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				038821CD261B245E00954DF3 /* Base */,
+			);
+			name = Home.storyboard;
+			sourceTree = "<group>";
+		};
+		038821E0261B2E9800954DF3 /* Profile.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				038821E1261B2E9800954DF3 /* Base */,
+			);
+			name = Profile.storyboard;
+			sourceTree = "<group>";
+		};
 		039024852616268C00BEE919 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
