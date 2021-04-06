@@ -11,8 +11,6 @@ class HistoryViewController: UIViewController {
   
     @IBOutlet weak var historyTable: UITableView!
     
-    func navigationController?.navigationBar.barTintColor = UIColor.green
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
