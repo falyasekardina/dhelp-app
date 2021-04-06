@@ -44,6 +44,7 @@
                                         </state>
                                         <connections>
                                             <action selector="addBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EdD-1V-ViP"/>
+                                            <segue destination="oaC-Vv-mCJ" kind="show" identifier="goToManual" id="a4m-a9-edF"/>
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Be2-LT-BSQ">
@@ -283,6 +284,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1118.4615384615383" y="961.13744075829379"/>
+        </scene>
+        <!--ByIngredientsView-->
+        <scene sceneID="xzs-Q1-jNZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ByIngredientsView" id="oaC-Vv-mCJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="okg-de-dH4"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gAA-iB-FDs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-325" y="961"/>
         </scene>
         <!--Home-->
         <scene sceneID="Bas-7K-1eD">

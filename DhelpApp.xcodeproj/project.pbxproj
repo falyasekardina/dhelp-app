@@ -25,6 +25,10 @@
 		039024A826162DF900BEE919 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024A726162DF900BEE919 /* Ingredient.swift */; };
 		039024B026162FFA00BEE919 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024AF26162FFA00BEE919 /* HistoryViewController.swift */; };
 		039024B42616300300BEE919 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024B32616300300BEE919 /* ProfileViewController.swift */; };
+		8407A2AD261C75E00028532A /* ByIngredientsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8407A2AC261C75E00028532A /* ByIngredientsView.storyboard */; };
+		8407A2B0261C75E70028532A /* ByIngredientsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407A2AF261C75E70028532A /* ByIngredientsTableViewController.swift */; };
+		8407A2B3261C75F50028532A /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8407A2B2261C75F50028532A /* FirstViewController.swift */; };
+		8407A2B6261C75FD0028532A /* FirstView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8407A2B5261C75FD0028532A /* FirstView.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +52,10 @@
 		039024A726162DF900BEE919 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		039024AF26162FFA00BEE919 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		039024B32616300300BEE919 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8407A2AC261C75E00028532A /* ByIngredientsView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ByIngredientsView.storyboard; path = "../../../../../../../Downloads/dhelp-app-master-2/DhelpApp/Pages/By Ingredients/View/ByIngredientsView.storyboard"; sourceTree = "<group>"; };
+		8407A2AF261C75E70028532A /* ByIngredientsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ByIngredientsTableViewController.swift; path = "../../../../../../../Downloads/dhelp-app-master-2/DhelpApp/Pages/By Ingredients/Controller/ByIngredientsTableViewController.swift"; sourceTree = "<group>"; };
+		8407A2B2261C75F50028532A /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirstViewController.swift; path = "../../../../../D-Help/D-Help/FirstViewController.swift"; sourceTree = "<group>"; };
+		8407A2B5261C75FD0028532A /* FirstView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = FirstView.storyboard; path = "../../../../../../../Downloads/dhelp-app-master-2/DhelpApp/Pages/FirstPage/View/FirstView.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,6 +203,8 @@
 		039024AA26162E6B00BEE919 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				8407A2A8261C75BA0028532A /* ByIngredients */,
+				8407A2A5261C75A40028532A /* FirstPage */,
 				0318D036261C1D0500D2E7CA /* ListInputedMeals */,
 				039024AE26162FEC00BEE919 /* Profile */,
 				039024AD26162FDD00BEE919 /* History */,
@@ -229,6 +239,56 @@
 				038821D9261B295800954DF3 /* View */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		8407A2A5261C75A40028532A /* FirstPage */ = {
+			isa = PBXGroup;
+			children = (
+				8407A2A7261C75B40028532A /* Controller */,
+				8407A2A6261C75AE0028532A /* View */,
+			);
+			path = FirstPage;
+			sourceTree = "<group>";
+		};
+		8407A2A6261C75AE0028532A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8407A2B5261C75FD0028532A /* FirstView.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8407A2A7261C75B40028532A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8407A2B2261C75F50028532A /* FirstViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8407A2A8261C75BA0028532A /* ByIngredients */ = {
+			isa = PBXGroup;
+			children = (
+				8407A2AB261C75CF0028532A /* Controller */,
+				8407A2A9261C75C30028532A /* View */,
+			);
+			path = ByIngredients;
+			sourceTree = "<group>";
+		};
+		8407A2A9261C75C30028532A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8407A2AC261C75E00028532A /* ByIngredientsView.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8407A2AB261C75CF0028532A /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8407A2AF261C75E70028532A /* ByIngredientsTableViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,11 +350,13 @@
 			files = (
 				0390249C2616276C00BEE919 /* Ingredients.json in Resources */,
 				034FB2FC261C67AB00D55547 /* ListInputedMeals.storyboard in Resources */,
+				8407A2B6261C75FD0028532A /* FirstView.storyboard in Resources */,
 				038821CE261B245E00954DF3 /* Home.storyboard in Resources */,
 				0390248F2616268D00BEE919 /* LaunchScreen.storyboard in Resources */,
 				0390248C2616268D00BEE919 /* Assets.xcassets in Resources */,
 				039024872616268C00BEE919 /* Main.storyboard in Resources */,
 				038821E2261B2E9800954DF3 /* Profile.storyboard in Resources */,
+				8407A2AD261C75E00028532A /* ByIngredientsView.storyboard in Resources */,
 				038821DD261B2E7F00954DF3 /* History.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -309,10 +371,12 @@
 				039024802616268C00BEE919 /* AppDelegate.swift in Sources */,
 				039024822616268C00BEE919 /* SceneDelegate.swift in Sources */,
 				0341AE402619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift in Sources */,
+				8407A2B3261C75F50028532A /* FirstViewController.swift in Sources */,
 				039024A826162DF900BEE919 /* Ingredient.swift in Sources */,
 				039024B026162FFA00BEE919 /* HistoryViewController.swift in Sources */,
 				036C8068261AC95C002A5EEA /* ListInputMealsTableViewController.swift in Sources */,
 				039024B42616300300BEE919 /* ProfileViewController.swift in Sources */,
+				8407A2B0261C75E70028532A /* ByIngredientsTableViewController.swift in Sources */,
 				0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */,
 				0390248A2616268C00BEE919 /* DhelpApp.xcdatamodeld in Sources */,
 				039024A026162B3700BEE919 /* HomeViewController.swift in Sources */,
