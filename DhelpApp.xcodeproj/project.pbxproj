@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0318D034261C1CF100D2E7CA /* ListInputedMeals.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0318D032261C1CF100D2E7CA /* ListInputedMeals.storyboard */; };
 		0341AE402619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */; };
 		0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE422619BB3300FFC68E /* DailyInTake.swift */; };
+		034FB2FC261C67AB00D55547 /* ListInputedMeals.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034FB2FB261C67AB00D55547 /* ListInputedMeals.storyboard */; };
 		036C8068261AC95C002A5EEA /* ListInputMealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */; };
 		038821CE261B245E00954DF3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038821CC261B245E00954DF3 /* Home.storyboard */; };
 		038821DD261B2E7F00954DF3 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038821DC261B2E7F00954DF3 /* History.storyboard */; };
@@ -28,9 +28,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0318D033261C1CF100D2E7CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DhelpApp/Pages/Home/View/DhelpApp/Base.lproj/ListInputedMeals.storyboard; sourceTree = "<group>"; };
 		0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0341AE422619BB3300FFC68E /* DailyInTake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyInTake.swift; sourceTree = "<group>"; };
+		034FB2FB261C67AB00D55547 /* ListInputedMeals.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListInputedMeals.storyboard; sourceTree = "<group>"; };
 		036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInputMealsTableViewController.swift; sourceTree = "<group>"; };
 		038821CD261B245E00954DF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DhelpApp/Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		038821DC261B2E7F00954DF3 /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
@@ -64,26 +64,10 @@
 		0318D036261C1D0500D2E7CA /* ListInputedMeals */ = {
 			isa = PBXGroup;
 			children = (
+				034FB2FA261C679100D55547 /* View */,
 				0318D039261C1D1E00D2E7CA /* Controller */,
-				0318D038261C1D1900D2E7CA /* View */,
-				0318D037261C1D1400D2E7CA /* Model */,
 			);
 			path = ListInputedMeals;
-			sourceTree = "<group>";
-		};
-		0318D037261C1D1400D2E7CA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		0318D038261C1D1900D2E7CA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				0318D032261C1CF100D2E7CA /* ListInputedMeals.storyboard */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		0318D039261C1D1E00D2E7CA /* Controller */ = {
@@ -92,6 +76,14 @@
 				036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		034FB2FA261C679100D55547 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				034FB2FB261C67AB00D55547 /* ListInputedMeals.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		038821D2261B28A100954DF3 /* Model */ = {
@@ -119,13 +111,6 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		038821D5261B291500954DF3 /* Modal */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Modal;
-			sourceTree = "<group>";
-		};
 		038821D6261B291B00954DF3 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,13 +125,6 @@
 				039024AF26162FFA00BEE919 /* HistoryViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		038821D8261B295300954DF3 /* Modal */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Modal;
 			sourceTree = "<group>";
 		};
 		038821D9261B295800954DF3 /* View */ = {
@@ -240,7 +218,6 @@
 			children = (
 				038821D7261B294900954DF3 /* Controller */,
 				038821D6261B291B00954DF3 /* View */,
-				038821D5261B291500954DF3 /* Modal */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -250,7 +227,6 @@
 			children = (
 				038821DA261B295F00954DF3 /* Controller */,
 				038821D9261B295800954DF3 /* View */,
-				038821D8261B295300954DF3 /* Modal */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -313,7 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0390249C2616276C00BEE919 /* Ingredients.json in Resources */,
-				0318D034261C1CF100D2E7CA /* ListInputedMeals.storyboard in Resources */,
+				034FB2FC261C67AB00D55547 /* ListInputedMeals.storyboard in Resources */,
 				038821CE261B245E00954DF3 /* Home.storyboard in Resources */,
 				0390248F2616268D00BEE919 /* LaunchScreen.storyboard in Resources */,
 				0390248C2616268D00BEE919 /* Assets.xcassets in Resources */,
@@ -346,14 +322,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		0318D032261C1CF100D2E7CA /* ListInputedMeals.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0318D033261C1CF100D2E7CA /* Base */,
-			);
-			name = ListInputedMeals.storyboard;
-			sourceTree = "<group>";
-		};
 		038821CC261B245E00954DF3 /* Home.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
