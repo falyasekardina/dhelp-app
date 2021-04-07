@@ -10,15 +10,15 @@ import UIKit
 class ByIngTableViewController: UITableViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
-    let data = ["Nasi","Semangak","Apple","Pizza"]
-    var filterData: [String]!
+    var data: [Ingredient]?
+    var filterData: [Ingredient]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         searchBar.delegate = self
-        
+        parseJson()
         filterData = data
+        self.tableView.tableFooterView = UIView(frame: .zero)
     }
 
     // MARK: - Table view data source
@@ -30,17 +30,20 @@ class ByIngTableViewController: UITableViewController, UISearchBarDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return filterData.count
+        return filterData?.count ?? 0
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
-        cell.textLabel?.text = filterData[indexPath.row]
+        cell.textLabel?.text = self.data?[indexPath.row].name
         return cell
     }
     
-    // search
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(self.data?[indexPath.row] ?? "Row")
+    }
     
+    // search
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterData = []
 
@@ -48,13 +51,26 @@ class ByIngTableViewController: UITableViewController, UISearchBarDelegate {
             filterData = data
         }
         else{
-        for makanan in data {
-            if makanan.lowercased().contains(searchText.lowercased()){
+        for makanan in data! {
+            if makanan.name.lowercased().contains(searchText.lowercased()){
                 filterData.append(makanan)
             }
-        }
+            }
         }
         self.tableView.reloadData()
+    }
+    func parseJson() {
+        guard let path = Bundle.main.path(forResource: "Ingredients", ofType: "json") else {
+            return
+        }
+        
+        let url = URL(fileURLWithPath: path)
+        do {
+            let jsonData = try Data(contentsOf: url)
+            self.data = try JSONDecoder().decode([Ingredient].self, from: jsonData)
+        } catch {
+            print("Error: \(error)")
+        }
     }
 }
 
