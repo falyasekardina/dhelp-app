@@ -20,6 +20,8 @@ class ByIngTableViewController: UITableViewController, UISearchBarDelegate {
         filterData = data
         self.tableView.tableFooterView = UIView(frame: .zero)
     }
+    
+    
 
     // MARK: - Table view data source
 
@@ -35,28 +37,29 @@ class ByIngTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
-        cell.textLabel?.text = self.data?[indexPath.row].name
+        cell.textLabel?.text = self.filterData?[indexPath.row].name
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(self.data?[indexPath.row] ?? "Row")
+        performSegue(withIdentifier: "DetailByIngredients", sender: self.data?[indexPath.row])
     }
     
     // search
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filterData = []
+        filterData.removeAll()
 
         if searchText == "" {
             filterData = data
-        }
-        else{
-        for makanan in data! {
-            if makanan.name.lowercased().contains(searchText.lowercased()){
-                filterData.append(makanan)
+        } else {
+            for makanan in data! {
+                if makanan.name.lowercased().contains(searchText.lowercased()){
+                    filterData.append(makanan)
+                }
             }
-            }
         }
+        
         self.tableView.reloadData()
     }
     func parseJson() {
@@ -70,6 +73,13 @@ class ByIngTableViewController: UITableViewController, UISearchBarDelegate {
             self.data = try JSONDecoder().decode([Ingredient].self, from: jsonData)
         } catch {
             print("Error: \(error)")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? InputManualViewController {
+            guard let ingredient = sender as? Ingredient else { return }
+            destinationVC.data = ingredient
         }
     }
 }
