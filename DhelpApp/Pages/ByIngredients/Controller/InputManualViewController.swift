@@ -40,6 +40,8 @@ class SectionName3{
 }
 
 class InputManualViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    var data: Ingredient?
 
     var sectionName = [SectionName]()
     
@@ -56,10 +58,9 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         sectionName.append(SectionName.init(section: "Time", item: ["Meal"]))
         
-        sectionName2.append(SectionName2.init(section2: "Detail", itemDetail: ["Nasi Putih"], itemSub: ["100 gr"]))
+        sectionName2.append(SectionName2.init(section2: "Detail", itemDetail: [data!.name], itemSub: ["\(data!.size) gr"]))
 
         mealTimeTable.tag = 1
         infoTable.tag = 2
@@ -115,6 +116,9 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
             if indexPath.row > 0{
                 let customCell = tableView.dequeueReusableCell(withIdentifier: LabelTableViewCell.identifier, for: indexPath) as!
                 LabelTableViewCell
+                customCell.labelCalories.text = "\(self.data!.calorie) kcal"
+                customCell.labelSugar.text = "\(self.data!.sugar) gr"
+                customCell.labelCarbo.text = "\(self.data!.carbs) gr"
                 return customCell
             }
             
@@ -181,4 +185,15 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
 
+}
+
+extension InputManualViewController {
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationItem.title = "By Ingredients"
+        navigationController?.navigationBar.barTintColor = UIColor(named: "Primary")
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
 }

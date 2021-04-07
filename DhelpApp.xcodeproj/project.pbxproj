@@ -11,6 +11,7 @@
 		0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE422619BB3300FFC68E /* DailyInTake.swift */; };
 		034FB2FC261C67AB00D55547 /* ListInputedMeals.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034FB2FB261C67AB00D55547 /* ListInputedMeals.storyboard */; };
 		036C8068261AC95C002A5EEA /* ListInputMealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */; };
+		0372A647261DA81000E3B4FF /* DetailIngredients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0372A646261DA81000E3B4FF /* DetailIngredients.storyboard */; };
 		038821CE261B245E00954DF3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038821CC261B245E00954DF3 /* Home.storyboard */; };
 		038821DD261B2E7F00954DF3 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038821DC261B2E7F00954DF3 /* History.storyboard */; };
 		038821E2261B2E9800954DF3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038821E0261B2E9800954DF3 /* Profile.storyboard */; };
@@ -43,6 +44,7 @@
 		0341AE422619BB3300FFC68E /* DailyInTake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyInTake.swift; sourceTree = "<group>"; };
 		034FB2FB261C67AB00D55547 /* ListInputedMeals.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListInputedMeals.storyboard; sourceTree = "<group>"; };
 		036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInputMealsTableViewController.swift; sourceTree = "<group>"; };
+		0372A646261DA81000E3B4FF /* DetailIngredients.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailIngredients.storyboard; sourceTree = "<group>"; };
 		038821CD261B245E00954DF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DhelpApp/Base.lproj/Home.storyboard; sourceTree = "<group>"; };
 		038821DC261B2E7F00954DF3 /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		038821E1261B2E9800954DF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DhelpApp/Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				84967B81261C860D002522DE /* ByIngredients.storyboard */,
+				0372A646261DA81000E3B4FF /* DetailIngredients.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				038821CE261B245E00954DF3 /* Home.storyboard in Resources */,
 				0390248F2616268D00BEE919 /* LaunchScreen.storyboard in Resources */,
 				84AD16DE261D911B003C06C9 /* LabelTableViewCell.xib in Resources */,
+				0372A647261DA81000E3B4FF /* DetailIngredients.storyboard in Resources */,
 				84967B64261C813E002522DE /* FirstView.storyboard in Resources */,
 				0390248C2616268D00BEE919 /* Assets.xcassets in Resources */,
 				84967B82261C860D002522DE /* ByIngredients.storyboard in Resources */,
