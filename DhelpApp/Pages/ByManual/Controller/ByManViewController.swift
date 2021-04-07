@@ -42,6 +42,7 @@ extension ByManViewController: UITableViewDelegate, UITableViewDataSource {
             "Serving Size"
         ]
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var sectionIndex : Int = 0
         if section == 0
@@ -69,6 +70,21 @@ extension ByManViewController: UITableViewDelegate, UITableViewDataSource {
         else if indexPath.section == 1 {
             let cellDetail = tableView.dequeueReusableCell(withIdentifier: "detail", for: indexPath)
             cellDetail.textLabel?.text = ListOfFields.fieldName[indexPath.row]
+            if indexPath.row == 0 {
+                cellDetail.detailTextLabel?.text = ""
+            }
+            else if indexPath.row == 1 {
+                cellDetail.detailTextLabel?.text = "kcal"
+            }
+            else if indexPath.row == 2 {
+                cellDetail.detailTextLabel?.text = "gr"
+            }
+            else if indexPath.row == 3 {
+                cellDetail.detailTextLabel?.text = "gr"
+            }
+            else if indexPath.row == 4 {
+                cellDetail.detailTextLabel?.text = "gr"
+            }
             
             return cellDetail
         }
