@@ -44,7 +44,7 @@
                                         </state>
                                         <connections>
                                             <action selector="addBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EdD-1V-ViP"/>
-                                            <segue destination="Yb6-So-ixS" kind="show" identifier="goToManual" id="64p-yZ-GyM"/>
+                                            <segue destination="Yb6-So-ixS" kind="show" identifier="goToIngredients" id="64p-yZ-GyM"/>
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Be2-LT-BSQ">
@@ -279,7 +279,7 @@
                         <outlet property="dateLbl" destination="GAc-mL-OmW" id="FU6-Id-e6w"/>
                         <outlet property="informationView" destination="z6F-FW-JHm" id="ggl-Yk-YWN"/>
                         <segue destination="i93-UI-HT9" kind="show" id="9Wa-3s-WgF"/>
-                        <segue destination="LTT-Ur-gff" kind="show" identifier="ByManual" id="npL-nk-jcu"/>
+                        <segue destination="LTT-Ur-gff" kind="show" identifier="goToManual" id="npL-nk-jcu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

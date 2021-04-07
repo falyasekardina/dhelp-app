@@ -66,7 +66,6 @@ extension ByManViewController: UITableViewDelegate, UITableViewDataSource {
             
             return cellTime
         }
-        
         else if indexPath.section == 1 {
             let cellDetail = tableView.dequeueReusableCell(withIdentifier: "detail", for: indexPath)
             cellDetail.textLabel?.text = ListOfFields.fieldName[indexPath.row]
@@ -78,22 +77,48 @@ extension ByManViewController: UITableViewDelegate, UITableViewDataSource {
         
     }
     
-    private func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-            var headerTitle : String?
-            if section == 0
-            {
-                headerTitle = "Time"
-            }
-            if section == 1
-            {
-                headerTitle = "Detail"
-            }
-            return headerTitle
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var headerTitle : String?
+        if section == 0
+        {
+            headerTitle = "Time"
         }
+        if section == 1
+        {
+            headerTitle = "Detail"
+        }
+        if section == 2
+        {
+            headerTitle = "History"
+        }
+        return headerTitle
+    }
 
     //Below method wil return number of sections
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    func numberOfSections(in tableView: UITableView) -> Int
     {
         return 3
+    }
+}
+
+extension ByManViewController {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationItem.title = "Add Food"
+        navigationController?.navigationBar.barTintColor = UIColor(named: "Primary")
+        navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
