@@ -9,6 +9,7 @@ import Foundation
 
 struct Ingredient: Codable {
     let name: String
+    let size: Double
     let sugar: Double
     let carbs: Double
     let calorie: Double

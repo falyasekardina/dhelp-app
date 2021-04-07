@@ -1,44 +1,58 @@
 [
     {
         "name": "Nasi",
-        "sugar": 0.0,
-        "carbs": 0.0,
-        "calorie": 0.0
+        "size": 100.0,
+        "sugar": 0.1,
+        "carbs": 28.0,
+        "calorie": 130.0
     },
     {
         "name": "Ubi",
-        "sugar": 0.0,
-        "carbs": 0.0,
-        "calorie": 0.0
+        "size": 100.0,
+        "sugar": 4.2,
+        "carbs": 20.0,
+        "calorie": 85.0
     },
     {
-        "name": "Keladi",
+        "name": "Talas",
+        "size": 100.0,
         "sugar": 0.0,
         "carbs": 0.0,
-        "calorie": 0.0
-    },
-    {
-        "name": "Roti",
-        "sugar": 0.0,
-        "carbs": 0.0,
-        "calorie": 0.0
+        "calorie": 175.0
     },
     {
         "name": "Singkong",
-        "sugar": 0.0,
-        "carbs": 0.0,
-        "calorie": 0.0
+        "size": 100.0,
+        "sugar": 1.7,
+        "carbs": 38.0,
+        "calorie": 159.0
+    },
+    {
+        "name": "Roti",
+        "size": 100.0,
+        "sugar": 5.0,
+        "carbs": 49.0,
+        "calorie": 264.0
     },
     {
         "name": "Mie",
+        "size": 100.0,
+        "sugar": 0.4,
+        "carbs": 25.0,
+        "calorie": 138.0
+    },
+    {
+        "name": "Mie Instan",
+        "size": 100.0,
         "sugar": 0.0,
-        "carbs": 0.0,
-        "calorie": 0.0
+        "carbs": 40.02,
+        "calorie": 219.0
     },
     {
         "name": "Kentang",
-        "sugar": 0.0,
-        "carbs": 0.0,
-        "calorie": 0.0
+        "size": 100.0,
+        "sugar": 0.8,
+        "carbs": 17.0,
+        "calorie": 76.0
     },
 ]
