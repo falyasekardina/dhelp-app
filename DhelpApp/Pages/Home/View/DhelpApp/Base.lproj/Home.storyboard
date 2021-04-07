@@ -279,6 +279,7 @@
                         <outlet property="dateLbl" destination="GAc-mL-OmW" id="FU6-Id-e6w"/>
                         <outlet property="informationView" destination="z6F-FW-JHm" id="ggl-Yk-YWN"/>
                         <segue destination="i93-UI-HT9" kind="show" id="9Wa-3s-WgF"/>
+                        <segue destination="LTT-Ur-gff" kind="show" identifier="ByManual" id="npL-nk-jcu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -323,6 +324,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NPi-hq-0Jx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1118" y="1671"/>
+        </scene>
+        <!--ByManual-->
+        <scene sceneID="QI5-eR-wbR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ByManual" id="LTT-Ur-gff" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ohq-LX-GEW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eaK-h6-q00" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="165" y="968"/>
         </scene>
     </scenes>
     <resources>
