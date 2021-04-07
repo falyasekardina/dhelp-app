@@ -25,10 +25,17 @@
 		039024A826162DF900BEE919 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024A726162DF900BEE919 /* Ingredient.swift */; };
 		039024B026162FFA00BEE919 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024AF26162FFA00BEE919 /* HistoryViewController.swift */; };
 		039024B42616300300BEE919 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024B32616300300BEE919 /* ProfileViewController.swift */; };
+		84092864261C9CF3004B42DA /* InputManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84092863261C9CF3004B42DA /* InputManualViewController.swift */; };
 		84967B64261C813E002522DE /* FirstView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84967B63261C813E002522DE /* FirstView.storyboard */; };
 		84967B6D261C816B002522DE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84967B6C261C816B002522DE /* FirstViewController.swift */; };
 		84967B82261C860D002522DE /* ByIngredients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84967B81261C860D002522DE /* ByIngredients.storyboard */; };
 		84967B85261C87A6002522DE /* ByIngTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84967B84261C87A6002522DE /* ByIngTableViewController.swift */; };
+		84AD16D3261D64F6003C06C9 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AD16D1261D64F6003C06C9 /* TableViewCell.swift */; };
+		84AD16D4261D64F6003C06C9 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AD16D2261D64F6003C06C9 /* TableViewCell.xib */; };
+		84AD16D8261D6B91003C06C9 /* ServingSizeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AD16D6261D6B91003C06C9 /* ServingSizeTableViewCell.swift */; };
+		84AD16D9261D6B91003C06C9 /* ServingSizeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AD16D7261D6B91003C06C9 /* ServingSizeTableViewCell.xib */; };
+		84AD16DD261D911B003C06C9 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AD16DB261D911B003C06C9 /* LabelTableViewCell.swift */; };
+		84AD16DE261D911B003C06C9 /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AD16DC261D911B003C06C9 /* LabelTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,10 +59,17 @@
 		039024A726162DF900BEE919 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		039024AF26162FFA00BEE919 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		039024B32616300300BEE919 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		84092863261C9CF3004B42DA /* InputManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManualViewController.swift; sourceTree = "<group>"; };
 		84967B63261C813E002522DE /* FirstView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstView.storyboard; sourceTree = "<group>"; };
 		84967B6C261C816B002522DE /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		84967B81261C860D002522DE /* ByIngredients.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ByIngredients.storyboard; sourceTree = "<group>"; };
 		84967B84261C87A6002522DE /* ByIngTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ByIngTableViewController.swift; sourceTree = "<group>"; };
+		84AD16D1261D64F6003C06C9 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		84AD16D2261D64F6003C06C9 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		84AD16D6261D6B91003C06C9 /* ServingSizeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServingSizeTableViewCell.swift; sourceTree = "<group>"; };
+		84AD16D7261D6B91003C06C9 /* ServingSizeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServingSizeTableViewCell.xib; sourceTree = "<group>"; };
+		84AD16DB261D911B003C06C9 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
+		84AD16DC261D911B003C06C9 /* LabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +276,13 @@
 			isa = PBXGroup;
 			children = (
 				84967B84261C87A6002522DE /* ByIngTableViewController.swift */,
+				84092863261C9CF3004B42DA /* InputManualViewController.swift */,
+				84AD16D1261D64F6003C06C9 /* TableViewCell.swift */,
+				84AD16D2261D64F6003C06C9 /* TableViewCell.xib */,
+				84AD16D6261D6B91003C06C9 /* ServingSizeTableViewCell.swift */,
+				84AD16D7261D6B91003C06C9 /* ServingSizeTableViewCell.xib */,
+				84AD16DB261D911B003C06C9 /* LabelTableViewCell.swift */,
+				84AD16DC261D911B003C06C9 /* LabelTableViewCell.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -349,13 +370,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0390249C2616276C00BEE919 /* Ingredients.json in Resources */,
+				84AD16D4261D64F6003C06C9 /* TableViewCell.xib in Resources */,
 				034FB2FC261C67AB00D55547 /* ListInputedMeals.storyboard in Resources */,
 				038821CE261B245E00954DF3 /* Home.storyboard in Resources */,
 				0390248F2616268D00BEE919 /* LaunchScreen.storyboard in Resources */,
+				84AD16DE261D911B003C06C9 /* LabelTableViewCell.xib in Resources */,
 				84967B64261C813E002522DE /* FirstView.storyboard in Resources */,
 				0390248C2616268D00BEE919 /* Assets.xcassets in Resources */,
 				84967B82261C860D002522DE /* ByIngredients.storyboard in Resources */,
 				039024872616268C00BEE919 /* Main.storyboard in Resources */,
+				84AD16D9261D6B91003C06C9 /* ServingSizeTableViewCell.xib in Resources */,
 				038821E2261B2E9800954DF3 /* Profile.storyboard in Resources */,
 				038821DD261B2E7F00954DF3 /* History.storyboard in Resources */,
 			);
@@ -373,11 +397,15 @@
 				0341AE402619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift in Sources */,
 				84967B6D261C816B002522DE /* FirstViewController.swift in Sources */,
 				039024A826162DF900BEE919 /* Ingredient.swift in Sources */,
+				84AD16D3261D64F6003C06C9 /* TableViewCell.swift in Sources */,
+				84AD16DD261D911B003C06C9 /* LabelTableViewCell.swift in Sources */,
 				039024B026162FFA00BEE919 /* HistoryViewController.swift in Sources */,
 				036C8068261AC95C002A5EEA /* ListInputMealsTableViewController.swift in Sources */,
+				84092864261C9CF3004B42DA /* InputManualViewController.swift in Sources */,
 				039024B42616300300BEE919 /* ProfileViewController.swift in Sources */,
 				0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */,
 				84967B85261C87A6002522DE /* ByIngTableViewController.swift in Sources */,
+				84AD16D8261D6B91003C06C9 /* ServingSizeTableViewCell.swift in Sources */,
 				0390248A2616268C00BEE919 /* DhelpApp.xcdatamodeld in Sources */,
 				039024A026162B3700BEE919 /* HomeViewController.swift in Sources */,
 			);
