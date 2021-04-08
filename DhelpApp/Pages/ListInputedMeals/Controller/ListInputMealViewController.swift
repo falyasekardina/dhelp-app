@@ -20,7 +20,6 @@ class ListInputMealViewController: UIViewController {
     
     let angka = [18, 24, 50, 40]
     
- //   @IBOutlet weak var addFoodBtnStyling: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
