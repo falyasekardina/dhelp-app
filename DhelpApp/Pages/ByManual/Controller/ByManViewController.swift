@@ -7,32 +7,42 @@
 
 import UIKit
 
-class ByManViewController: UIViewController {
+class ByManViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var addFoodTable: UITableView!
+    @IBOutlet weak var mealTime: UITextField!
+    @IBOutlet weak var foodNameInput: UITextField!
     
-    let timePicker = UIPickerView()
+    var timePicker = UIPickerView()
        
     let timeOption = ["Breakfast","Lunch","Dinner","Snack"]
+    
+    var arrayData  = ["", "", "", "", "", ""]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addFoodTable.delegate = self
         addFoodTable.dataSource = self
-
-        // Do any additional setup after loading the view.
+        mealTime.inputView = timePicker
+        timePicker.delegate = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
-    */
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        timeOption.count
+    }
+    
+    func pickerView( _ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+     return timeOption[row]
+    }
+
+    func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        arrayData[0] = timeOption[row]
+        addFoodTable.reloadData()
+    }
 
 }
 
@@ -68,6 +78,13 @@ extension ByManViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             let cellTime = tableView.dequeueReusableCell(withIdentifier: "time", for: indexPath)
             cellTime.textLabel?.text = "Time"
+            print(arrayData[0])
+            if arrayData[0] == "" {
+                cellTime.detailTextLabel?.text = "Required"
+            }
+            else {
+                cellTime.detailTextLabel?.text = arrayData[0]
+            }
             
             return cellTime
         }
@@ -87,7 +104,7 @@ extension ByManViewController: UITableViewDelegate, UITableViewDataSource {
                 cellDetail.detailTextLabel?.text = "gr"
             }
             else if indexPath.row == 4 {
-                cellDetail.detailTextLabel?.text = "gr"
+                cellDetail.detailTextLabel?.text = ""
             }
             
             return cellDetail
