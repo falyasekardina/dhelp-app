@@ -37,6 +37,8 @@
 		84AD16DE261D911B003C06C9 /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84AD16DC261D911B003C06C9 /* LabelTableViewCell.xib */; };
 		E019B341261F0C120042F432 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E019B340261F0C120042F432 /* ProfileViewController.swift */; };
 		E019B344261F0C210042F432 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E019B343261F0C210042F432 /* Profile.storyboard */; };
+		E7B9DF03261F1121004864C4 /* ByManViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B9DF02261F1121004864C4 /* ByManViewController.swift */; };
+		E7B9DF06261F1128004864C4 /* ByManual.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B9DF05261F1128004864C4 /* ByManual.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,8 @@
 		84AD16DC261D911B003C06C9 /* LabelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LabelTableViewCell.xib; sourceTree = "<group>"; };
 		E019B340261F0C120042F432 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E019B343261F0C210042F432 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		E7B9DF02261F1121004864C4 /* ByManViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByManViewController.swift; sourceTree = "<group>"; };
+		E7B9DF05261F1128004864C4 /* ByManual.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ByManual.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +223,7 @@
 		039024AA26162E6B00BEE919 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				E7B9DEFF261F10FF004864C4 /* ByManual */,
 				84967B53261C80C9002522DE /* FirstPage */,
 				84967B50261C80AD002522DE /* ByIngredients */,
 				0318D036261C1D0500D2E7CA /* ListInputedMeals */,
@@ -315,6 +320,31 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		E7B9DEFF261F10FF004864C4 /* ByManual */ = {
+			isa = PBXGroup;
+			children = (
+				E7B9DF01261F110E004864C4 /* Controller */,
+				E7B9DF00261F110A004864C4 /* View */,
+			);
+			path = ByManual;
+			sourceTree = "<group>";
+		};
+		E7B9DF00261F110A004864C4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E7B9DF05261F1128004864C4 /* ByManual.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E7B9DF01261F110E004864C4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				E7B9DF02261F1121004864C4 /* ByManViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -382,6 +412,7 @@
 				0376587D261EEAD500E36D4D /* Home.storyboard in Resources */,
 				0390248C2616268D00BEE919 /* Assets.xcassets in Resources */,
 				84967B82261C860D002522DE /* ByIngredients.storyboard in Resources */,
+				E7B9DF06261F1128004864C4 /* ByManual.storyboard in Resources */,
 				039024872616268C00BEE919 /* Main.storyboard in Resources */,
 				84AD16D9261D6B91003C06C9 /* ServingSizeTableViewCell.xib in Resources */,
 				E019B344261F0C210042F432 /* Profile.storyboard in Resources */,
@@ -409,6 +440,7 @@
 				03C727CE261DF5BA00552BFF /* ListInputMealViewController.swift in Sources */,
 				0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */,
 				84967B85261C87A6002522DE /* ByIngTableViewController.swift in Sources */,
+				E7B9DF03261F1121004864C4 /* ByManViewController.swift in Sources */,
 				84AD16D8261D6B91003C06C9 /* ServingSizeTableViewCell.swift in Sources */,
 				0390248A2616268C00BEE919 /* DhelpApp.xcdatamodeld in Sources */,
 				039024A026162B3700BEE919 /* HomeViewController.swift in Sources */,
