@@ -10,6 +10,10 @@ import UIKit
 class ByManViewController: UIViewController {
     
     @IBOutlet weak var addFoodTable: UITableView!
+    
+    let timePicker = UIPickerView()
+       
+    let timeOption = ["Breakfast","Lunch","Dinner","Snack"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
