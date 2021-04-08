@@ -148,6 +148,7 @@ extension ByManViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = "Add Food"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: nil)
         navigationController?.navigationBar.barTintColor = UIColor(named: "Primary")
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
