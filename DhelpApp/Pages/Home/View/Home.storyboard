@@ -44,7 +44,7 @@
                                         </state>
                                         <connections>
                                             <action selector="addBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EdD-1V-ViP"/>
-                                            <segue destination="Yb6-So-ixS" kind="show" identifier="goToManual" id="64p-yZ-GyM"/>
+                                            <segue destination="Yb6-So-ixS" kind="show" identifier="goToIngredients" id="64p-yZ-GyM"/>
                                         </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Be2-LT-BSQ">
@@ -282,6 +282,7 @@
                         <outlet property="dateLbl" destination="GAc-mL-OmW" id="FU6-Id-e6w"/>
                         <outlet property="informationView" destination="z6F-FW-JHm" id="ggl-Yk-YWN"/>
                         <segue destination="bh7-3H-O1f" kind="show" identifier="ListInputMeal" id="L1r-o1-oxb"/>
+                        <segue destination="vJa-MF-Fta" kind="show" identifier="goToManual" id="OoL-35-MHU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -297,6 +298,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMn-Qc-eKR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-495" y="960"/>
+        </scene>
+        <!--ByManual-->
+        <scene sceneID="30g-pt-u4h">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ByManual" id="vJa-MF-Fta" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jjI-Er-e6W"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gld-PP-l2D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-418" y="1045"/>
         </scene>
         <!--Home-->
         <scene sceneID="Bas-7K-1eD">

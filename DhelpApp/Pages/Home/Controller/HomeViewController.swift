@@ -26,10 +26,10 @@ class HomeViewController: UIViewController {
     @IBAction func addBtn(_ sender: UIButton) {
         let optionMenu = UIAlertController(title: nil, message: "Please choose your input preferences", preferredStyle: .actionSheet)
         let byIngredients = UIAlertAction(title: "By Ingredient", style: .default) { action in
-            self.performSegue(withIdentifier: "goToManual", sender: self)
+            self.performSegue(withIdentifier: "goToIngredients", sender: self)
         }
         let manualInput = UIAlertAction(title: "Manual Input", style: .default) { action in
-            print("Manual Input")
+            self.performSegue(withIdentifier: "goToManual", sender: self)
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         
