@@ -1,13 +1,13 @@
 //
-//  ListInputMealsTableViewController.swift
+//  ListInputMealViewController.swift
 //  DhelpApp
 //
-//  Created by Reza Harris on 05/04/21.
+//  Created by Reza Harris on 07/04/21.
 //
 
 import UIKit
 
-class ListInputMealsTableViewController: UITableViewController {
+class ListInputMealViewController: UIViewController {
     
     var getTitle = ""
     
@@ -19,25 +19,52 @@ class ListInputMealsTableViewController: UITableViewController {
     ]
     
     let angka = [18, 24, 50, 40]
-
+    
+    @IBOutlet weak var addFoodBtnStyling: UIButton!
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.tableFooterView = UIView(frame: .zero)
+        // Do any additional setup after loading the view.
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    @IBAction func addFoodBtn(_ sender: UIButton) {
+        let optionMenu = UIAlertController(title: nil, message: "Please choose your input preferences", preferredStyle: .actionSheet)
+        let byIngredients = UIAlertAction(title: "By Ingredient", style: .default) { action in
+            self.performSegue(withIdentifier: "byIngredientPage", sender: self)
+        }
+        let manualInput = UIAlertAction(title: "Manual Input", style: .default) { action in
+            print("Manual Input")
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        optionMenu.addAction(byIngredients)
+        optionMenu.addAction(manualInput)
+        optionMenu.addAction(cancelAction)
+        optionMenu.view.addSubview(UIView())
+        self.present(optionMenu, animated: false)
+    }
+}
+
+extension ListInputMealViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("you tapped me!")
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return names.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
         let array = angka.map{
@@ -49,14 +76,14 @@ class ListInputMealsTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (contextualAction, view, actionPerformed: (Bool) -> ()) in
             self.deleteTapped()
         }
         return UISwipeActionsConfiguration(actions: [delete])
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
     
@@ -79,13 +106,14 @@ class ListInputMealsTableViewController: UITableViewController {
     }
 }
 
-extension ListInputMealsTableViewController {
+extension ListInputMealViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        addFoodBtnStyling.layer.cornerRadius = 15
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = getTitle

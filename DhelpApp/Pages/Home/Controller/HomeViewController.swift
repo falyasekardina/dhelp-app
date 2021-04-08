@@ -110,9 +110,16 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let view = storyboard?.instantiateViewController(identifier: "ListInputMeals") as! ListInputMealsTableViewController
-        view.getTitle = dailyInTakes[indexPath.row].title
-        self.navigationController?.pushViewController(view, animated: true)
+        self.performSegue(withIdentifier: "ListInputMeal", sender: dailyInTakes[indexPath.row].title)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? ListInputMealViewController {
+            guard let ingredient = sender as? String else {
+                return
+            }
+            destinationVC.getTitle = ingredient
+        }
     }
     
     func setupCollectionViewCellLayout(cell: UICollectionViewCell)
