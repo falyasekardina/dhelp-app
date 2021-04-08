@@ -11,7 +11,6 @@
 		0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE422619BB3300FFC68E /* DailyInTake.swift */; };
 		0372A647261DA81000E3B4FF /* DetailIngredients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0372A646261DA81000E3B4FF /* DetailIngredients.storyboard */; };
 		0376587D261EEAD500E36D4D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0376587C261EEAD500E36D4D /* Home.storyboard */; };
-		038821DD261B2E7F00954DF3 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038821DC261B2E7F00954DF3 /* History.storyboard */; };
 		039024802616268C00BEE919 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0390247F2616268C00BEE919 /* AppDelegate.swift */; };
 		039024822616268C00BEE919 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024812616268C00BEE919 /* SceneDelegate.swift */; };
 		039024872616268C00BEE919 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 039024852616268C00BEE919 /* Main.storyboard */; };
@@ -21,7 +20,6 @@
 		0390249C2616276C00BEE919 /* Ingredients.json in Resources */ = {isa = PBXBuildFile; fileRef = 0390249B2616276C00BEE919 /* Ingredients.json */; };
 		039024A026162B3700BEE919 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0390249F26162B3700BEE919 /* HomeViewController.swift */; };
 		039024A826162DF900BEE919 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024A726162DF900BEE919 /* Ingredient.swift */; };
-		039024B026162FFA00BEE919 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024AF26162FFA00BEE919 /* HistoryViewController.swift */; };
 		03C727CE261DF5BA00552BFF /* ListInputMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C727CD261DF5BA00552BFF /* ListInputMealViewController.swift */; };
 		03C7FC6B261EEEA00089C710 /* ListInputMeal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C7FC6A261EEEA00089C710 /* ListInputMeal.storyboard */; };
 		84092864261C9CF3004B42DA /* InputManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84092863261C9CF3004B42DA /* InputManualViewController.swift */; };
@@ -39,6 +37,10 @@
 		E019B344261F0C210042F432 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E019B343261F0C210042F432 /* Profile.storyboard */; };
 		E7B9DF03261F1121004864C4 /* ByManViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B9DF02261F1121004864C4 /* ByManViewController.swift */; };
 		E7B9DF06261F1128004864C4 /* ByManual.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B9DF05261F1128004864C4 /* ByManual.storyboard */; };
+		FC68DA13261F345A0016665A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68DA11261F345A0016665A /* HistoryViewController.swift */; };
+		FC68DA14261F345A0016665A /* DetailHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68DA12261F345A0016665A /* DetailHistoryViewController.swift */; };
+		FC68DA18261F34650016665A /* DetailHistory.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC68DA16261F34650016665A /* DetailHistory.storyboard */; };
+		FC68DA19261F34650016665A /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC68DA17261F34650016665A /* History.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +48,6 @@
 		0341AE422619BB3300FFC68E /* DailyInTake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyInTake.swift; sourceTree = "<group>"; };
 		0372A646261DA81000E3B4FF /* DetailIngredients.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailIngredients.storyboard; sourceTree = "<group>"; };
 		0376587C261EEAD500E36D4D /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
-		038821DC261B2E7F00954DF3 /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		0390247C2616268C00BEE919 /* DhelpApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DhelpApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0390247F2616268C00BEE919 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		039024812616268C00BEE919 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,7 +59,6 @@
 		0390249B2616276C00BEE919 /* Ingredients.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Ingredients.json; path = DhelpApp/JSON/Ingredients.json; sourceTree = SOURCE_ROOT; };
 		0390249F26162B3700BEE919 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		039024A726162DF900BEE919 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
-		039024AF26162FFA00BEE919 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		03C727CD261DF5BA00552BFF /* ListInputMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInputMealViewController.swift; sourceTree = "<group>"; };
 		03C7FC6A261EEEA00089C710 /* ListInputMeal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListInputMeal.storyboard; sourceTree = "<group>"; };
 		84092863261C9CF3004B42DA /* InputManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManualViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +76,10 @@
 		E019B343261F0C210042F432 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		E7B9DF02261F1121004864C4 /* ByManViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByManViewController.swift; sourceTree = "<group>"; };
 		E7B9DF05261F1128004864C4 /* ByManual.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ByManual.storyboard; sourceTree = "<group>"; };
+		FC68DA11261F345A0016665A /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		FC68DA12261F345A0016665A /* DetailHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailHistoryViewController.swift; sourceTree = "<group>"; };
+		FC68DA16261F34650016665A /* DetailHistory.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailHistory.storyboard; sourceTree = "<group>"; };
+		FC68DA17261F34650016665A /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +146,8 @@
 		038821D6261B291B00954DF3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				038821DC261B2E7F00954DF3 /* History.storyboard */,
+				FC68DA16261F34650016665A /* DetailHistory.storyboard */,
+				FC68DA17261F34650016665A /* History.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -150,7 +155,8 @@
 		038821D7261B294900954DF3 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				039024AF26162FFA00BEE919 /* HistoryViewController.swift */,
+				FC68DA12261F345A0016665A /* DetailHistoryViewController.swift */,
+				FC68DA11261F345A0016665A /* HistoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -404,6 +410,7 @@
 			files = (
 				0390249C2616276C00BEE919 /* Ingredients.json in Resources */,
 				84AD16D4261D64F6003C06C9 /* TableViewCell.xib in Resources */,
+				FC68DA18261F34650016665A /* DetailHistory.storyboard in Resources */,
 				0390248F2616268D00BEE919 /* LaunchScreen.storyboard in Resources */,
 				84AD16DE261D911B003C06C9 /* LabelTableViewCell.xib in Resources */,
 				0372A647261DA81000E3B4FF /* DetailIngredients.storyboard in Resources */,
@@ -412,11 +419,11 @@
 				0376587D261EEAD500E36D4D /* Home.storyboard in Resources */,
 				0390248C2616268D00BEE919 /* Assets.xcassets in Resources */,
 				84967B82261C860D002522DE /* ByIngredients.storyboard in Resources */,
+				FC68DA19261F34650016665A /* History.storyboard in Resources */,
 				E7B9DF06261F1128004864C4 /* ByManual.storyboard in Resources */,
 				039024872616268C00BEE919 /* Main.storyboard in Resources */,
 				84AD16D9261D6B91003C06C9 /* ServingSizeTableViewCell.xib in Resources */,
 				E019B344261F0C210042F432 /* Profile.storyboard in Resources */,
-				038821DD261B2E7F00954DF3 /* History.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,14 +442,15 @@
 				84AD16D3261D64F6003C06C9 /* TableViewCell.swift in Sources */,
 				E019B341261F0C120042F432 /* ProfileViewController.swift in Sources */,
 				84AD16DD261D911B003C06C9 /* LabelTableViewCell.swift in Sources */,
-				039024B026162FFA00BEE919 /* HistoryViewController.swift in Sources */,
 				84092864261C9CF3004B42DA /* InputManualViewController.swift in Sources */,
 				03C727CE261DF5BA00552BFF /* ListInputMealViewController.swift in Sources */,
 				0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */,
 				84967B85261C87A6002522DE /* ByIngTableViewController.swift in Sources */,
 				E7B9DF03261F1121004864C4 /* ByManViewController.swift in Sources */,
 				84AD16D8261D6B91003C06C9 /* ServingSizeTableViewCell.swift in Sources */,
+				FC68DA14261F345A0016665A /* DetailHistoryViewController.swift in Sources */,
 				0390248A2616268C00BEE919 /* DhelpApp.xcdatamodeld in Sources */,
+				FC68DA13261F345A0016665A /* HistoryViewController.swift in Sources */,
 				039024A026162B3700BEE919 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
