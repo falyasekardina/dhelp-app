@@ -29,15 +29,6 @@ class SectionName2{
     }
 }
 
-class SectionName3{
-    var section3: String?
-    var nameText: [String]?
-    
-    init(section3: String, nameText: [String]) {
-        self.section3 = section3
-        self.nameText = nameText
-    }
-}
 
 class InputManualViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -47,7 +38,6 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
     
     var sectionName2 = [SectionName2]()
     
-    var sectionName3 = [SectionName3]()
     
     
     
@@ -67,9 +57,11 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         
         mealTimeTable.delegate = self
         mealTimeTable.dataSource = self
+        mealTimeTable.isScrollEnabled = false
         
         infoTable.delegate = self
         infoTable.dataSource = self
+        infoTable.isScrollEnabled = false
         
         mealTimeTable.register(TableViewCell.nib() , forCellReuseIdentifier: TableViewCell.identifier)
         
@@ -125,6 +117,7 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
             let cell2 = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath)
             cell2.textLabel?.text = sectionName2[indexPath.section].itemDetail?[indexPath.row]
             cell2.detailTextLabel?.text = sectionName2[indexPath.section].itemSub?[indexPath.row]
+            cell2.detailTextLabel?.textColor = #colorLiteral(red: 0.5178547502, green: 0.5172992349, blue: 0.5433796048, alpha: 1)
             return cell2
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "cel", for: indexPath)
@@ -137,7 +130,11 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         case 1:
             return 44
         case 2:
-            return 70
+            if indexPath.row == 1{
+                return 70
+            } else{
+                return 44
+            }
         default:
             return 0
         }
@@ -152,19 +149,21 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         switch tableView.tag {
         case 1:
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
-            view.backgroundColor = .gray
+            view.backgroundColor = #colorLiteral(red: 0.9491460919, green: 0.9487624764, blue: 0.9704342484, alpha: 1)
             
             let labelName = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.width - 15, height: 40))
             labelName.text = sectionName[section].section
+            labelName.textColor = #colorLiteral(red: 0.5178547502, green: 0.5172992349, blue: 0.5433796048, alpha: 1)
             view.addSubview(labelName)
             
             return view
         case 2:
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
-            view.backgroundColor = .gray
+            view.backgroundColor = #colorLiteral(red: 0.9491460919, green: 0.9487624764, blue: 0.9704342484, alpha: 1)
             
             let labelName = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.width - 15, height: 40))
             labelName.text = sectionName2[section].section2
+            labelName.textColor = #colorLiteral(red: 0.5178547502, green: 0.5172992349, blue: 0.5433796048, alpha: 1)
             view.addSubview(labelName)
             
             return view
@@ -192,6 +191,7 @@ extension InputManualViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = "By Ingredients"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: nil)
         navigationController?.navigationBar.barTintColor = UIColor(named: "Primary")
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]

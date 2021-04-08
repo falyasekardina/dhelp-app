@@ -122,6 +122,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
     }
     
+    
+    
     func setupCollectionViewCellLayout(cell: UICollectionViewCell)
     {
         cell.layer.cornerRadius = 20

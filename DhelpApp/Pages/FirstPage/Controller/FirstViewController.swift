@@ -22,6 +22,7 @@ class FirstViewController: UIViewController {
     let levelOption = ["Sedentary (Never/Rarely Exercise)","Moderately (Exercise 1-2x / Week)","Vigorously Exercise 3-5x / Week)","Extremely Exercise 6-7x / Week)"]
     let levelPicker = UIPickerView()
     
+    let hello = "hello world"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,6 +48,12 @@ class FirstViewController: UIViewController {
         //button
         buttonSubmit.layer.cornerRadius = 25.0
     }
+    
+    @IBAction func submitButton(_ sender: Any) {
+//        let move = storyboard?.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+//                    navigationController?.setViewControllers([move], animated: true)
+    }
+    
     func creatToolbar() -> UIToolbar{
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
