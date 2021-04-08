@@ -48,6 +48,12 @@ class FirstViewController: UIViewController {
         //button
         buttonSubmit.layer.cornerRadius = 25.0
     }
+    
+    @IBAction func submitButton(_ sender: Any) {
+//        let move = storyboard?.instantiateViewController(withIdentifier: "Home") as! HomeViewController
+//                    navigationController?.setViewControllers([move], animated: true)
+    }
+    
     func creatToolbar() -> UIToolbar{
         let toolbar = UIToolbar()
         toolbar.sizeToFit()

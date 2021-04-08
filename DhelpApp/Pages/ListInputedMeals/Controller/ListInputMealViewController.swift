@@ -20,7 +20,7 @@ class ListInputMealViewController: UIViewController {
     
     let angka = [18, 24, 50, 40]
     
-    @IBOutlet weak var addFoodBtnStyling: UIButton!
+ //   @IBOutlet weak var addFoodBtnStyling: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -31,22 +31,22 @@ class ListInputMealViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func addFoodBtn(_ sender: UIButton) {
-        let optionMenu = UIAlertController(title: nil, message: "Please choose your input preferences", preferredStyle: .actionSheet)
-        let byIngredients = UIAlertAction(title: "By Ingredient", style: .default) { action in
-            self.performSegue(withIdentifier: "byIngredientPage", sender: self)
-        }
-        let manualInput = UIAlertAction(title: "Manual Input", style: .default) { action in
-            print("Manual Input")
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        
-        optionMenu.addAction(byIngredients)
-        optionMenu.addAction(manualInput)
-        optionMenu.addAction(cancelAction)
-        optionMenu.view.addSubview(UIView())
-        self.present(optionMenu, animated: false)
-    }
+//    @IBAction func addFoodBtn(_ sender: UIButton) {
+//        let optionMenu = UIAlertController(title: nil, message: "Please choose your input preferences", preferredStyle: .actionSheet)
+//        let byIngredients = UIAlertAction(title: "By Ingredient", style: .default) { action in
+//            self.performSegue(withIdentifier: "byIngredientPage", sender: self)
+//        }
+//        let manualInput = UIAlertAction(title: "Manual Input", style: .default) { action in
+//            print("Manual Input")
+//        }
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+//
+//        optionMenu.addAction(byIngredients)
+//        optionMenu.addAction(manualInput)
+//        optionMenu.addAction(cancelAction)
+//        optionMenu.view.addSubview(UIView())
+//        self.present(optionMenu, animated: false)
+//    }
 }
 
 extension ListInputMealViewController: UITableViewDelegate, UITableViewDataSource {
@@ -113,7 +113,7 @@ extension ListInputMealViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addFoodBtnStyling.layer.cornerRadius = 15
+        //addFoodBtnStyling.layer.cornerRadius = 15
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = getTitle

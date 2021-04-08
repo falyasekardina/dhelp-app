@@ -29,15 +29,6 @@ class SectionName2{
     }
 }
 
-class SectionName3{
-    var section3: String?
-    var nameText: [String]?
-    
-    init(section3: String, nameText: [String]) {
-        self.section3 = section3
-        self.nameText = nameText
-    }
-}
 
 class InputManualViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -47,7 +38,6 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
     
     var sectionName2 = [SectionName2]()
     
-    var sectionName3 = [SectionName3]()
     
     
     
