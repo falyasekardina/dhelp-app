@@ -8,7 +8,15 @@
 import UIKit
 
 class HistoryViewController: UIViewController {
+    
+    var selectedMonth : String?
+    
+//    let date1 = generateDates(dates: "2020-08-21")
+    
+    var month : [DataTanggal] = []
   
+    @IBOutlet weak var detailHistoryCell: UITableViewCell!
+    
     @IBOutlet weak var historyTable: UITableView!
     
     @IBOutlet weak var pickMonth: UITextField!
@@ -22,7 +30,21 @@ class HistoryViewController: UIViewController {
         historyTable.dataSource = self
         
         createMonthPicker()
+        
+        let date1 = generateDates(dates: "2020-08-21")
+        
+        month.append(DataTanggal(dates: date1, size: "40 gr"))
+        
+        month.append(DataTanggal(dates: generateDates(dates: "2020-08-12"), size: "50 gr"))
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let destination = UI(title: "detailHistory", style: .default) { action in
+//            self.performSegue(withIdentifier: "", sender: self)
+//        }
+//    }
+    
+    
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
@@ -54,15 +76,21 @@ class HistoryViewController: UIViewController {
         
     }
     
+  
+
     @objc func pickDone(){
         let pickMonthFormat = DateFormatter()
         
         pickMonthFormat.dateFormat = "MMMM, yyyy"
         
+        selectedMonth = pickMonthFormat.string(from: monthPicker.date)
+        
         pickMonth.text = pickMonthFormat.string(from: monthPicker.date)
         
-        view.endEditing(true)
+        self.historyTable.reloadData()
+        self.view.endEditing(true)
     }
+    
     
 }
     
@@ -71,6 +99,8 @@ extension HistoryViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         print("history detail")
+        
+        self.performSegue(withIdentifier: "detailHistory", sender: self)
     }
 }
 
@@ -78,19 +108,23 @@ extension HistoryViewController: UITableViewDelegate{
 extension HistoryViewController: UITableViewDataSource{
         
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return month.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = "Hellow"
-        cell.detailTextLabel?.text = "gram gram"
+        cell.textLabel?.text = "\(month[indexPath.row].dates)"
+        cell.detailTextLabel?.text = month[indexPath.row].size
         
         return cell
     }
+    
+    
 }
+
+
 
 extension HistoryViewController {
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -111,8 +145,21 @@ extension HistoryViewController {
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = false
     }
+    
+    func generateDates(dates: String) -> Date {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let date = dateFormatter.date(from: dates)
+            return date ?? Date()
+    }
 }
 
+struct DataTanggal {
+    let dates : Date
+    let size : String
+    
+    
+}
 
 
 
