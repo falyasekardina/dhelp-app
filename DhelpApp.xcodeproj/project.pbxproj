@@ -9,10 +9,8 @@
 /* Begin PBXBuildFile section */
 		0341AE402619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */; };
 		0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE422619BB3300FFC68E /* DailyInTake.swift */; };
-		034FB2FC261C67AB00D55547 /* ListInputedMeals.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 034FB2FB261C67AB00D55547 /* ListInputedMeals.storyboard */; };
-		036C8068261AC95C002A5EEA /* ListInputMealsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */; };
 		0372A647261DA81000E3B4FF /* DetailIngredients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0372A646261DA81000E3B4FF /* DetailIngredients.storyboard */; };
-		038821CE261B245E00954DF3 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038821CC261B245E00954DF3 /* Home.storyboard */; };
+		0376587D261EEAD500E36D4D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0376587C261EEAD500E36D4D /* Home.storyboard */; };
 		038821DD261B2E7F00954DF3 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038821DC261B2E7F00954DF3 /* History.storyboard */; };
 		038821E2261B2E9800954DF3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 038821E0261B2E9800954DF3 /* Profile.storyboard */; };
 		039024802616268C00BEE919 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0390247F2616268C00BEE919 /* AppDelegate.swift */; };
@@ -26,6 +24,8 @@
 		039024A826162DF900BEE919 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024A726162DF900BEE919 /* Ingredient.swift */; };
 		039024B026162FFA00BEE919 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024AF26162FFA00BEE919 /* HistoryViewController.swift */; };
 		039024B42616300300BEE919 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024B32616300300BEE919 /* ProfileViewController.swift */; };
+		03C727CE261DF5BA00552BFF /* ListInputMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C727CD261DF5BA00552BFF /* ListInputMealViewController.swift */; };
+		03C7FC6B261EEEA00089C710 /* ListInputMeal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C7FC6A261EEEA00089C710 /* ListInputMeal.storyboard */; };
 		84092864261C9CF3004B42DA /* InputManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84092863261C9CF3004B42DA /* InputManualViewController.swift */; };
 		84967B64261C813E002522DE /* FirstView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84967B63261C813E002522DE /* FirstView.storyboard */; };
 		84967B6D261C816B002522DE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84967B6C261C816B002522DE /* FirstViewController.swift */; };
@@ -42,10 +42,8 @@
 /* Begin PBXFileReference section */
 		0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0341AE422619BB3300FFC68E /* DailyInTake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyInTake.swift; sourceTree = "<group>"; };
-		034FB2FB261C67AB00D55547 /* ListInputedMeals.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListInputedMeals.storyboard; sourceTree = "<group>"; };
-		036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInputMealsTableViewController.swift; sourceTree = "<group>"; };
 		0372A646261DA81000E3B4FF /* DetailIngredients.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailIngredients.storyboard; sourceTree = "<group>"; };
-		038821CD261B245E00954DF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DhelpApp/Base.lproj/Home.storyboard; sourceTree = "<group>"; };
+		0376587C261EEAD500E36D4D /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		038821DC261B2E7F00954DF3 /* History.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
 		038821E1261B2E9800954DF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = DhelpApp/Base.lproj/Profile.storyboard; sourceTree = "<group>"; };
 		0390247C2616268C00BEE919 /* DhelpApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DhelpApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +59,8 @@
 		039024A726162DF900BEE919 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		039024AF26162FFA00BEE919 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		039024B32616300300BEE919 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		03C727CD261DF5BA00552BFF /* ListInputMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInputMealViewController.swift; sourceTree = "<group>"; };
+		03C7FC6A261EEEA00089C710 /* ListInputMeal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListInputMeal.storyboard; sourceTree = "<group>"; };
 		84092863261C9CF3004B42DA /* InputManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManualViewController.swift; sourceTree = "<group>"; };
 		84967B63261C813E002522DE /* FirstView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstView.storyboard; sourceTree = "<group>"; };
 		84967B6C261C816B002522DE /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +97,7 @@
 		0318D039261C1D1E00D2E7CA /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				036C8067261AC95C002A5EEA /* ListInputMealsTableViewController.swift */,
+				03C727CD261DF5BA00552BFF /* ListInputMealViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -105,7 +105,7 @@
 		034FB2FA261C679100D55547 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				034FB2FB261C67AB00D55547 /* ListInputedMeals.storyboard */,
+				03C7FC6A261EEEA00089C710 /* ListInputMeal.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -121,7 +121,7 @@
 		038821D3261B28B000954DF3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				038821CC261B245E00954DF3 /* Home.storyboard */,
+				0376587C261EEAD500E36D4D /* Home.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -374,12 +374,12 @@
 			files = (
 				0390249C2616276C00BEE919 /* Ingredients.json in Resources */,
 				84AD16D4261D64F6003C06C9 /* TableViewCell.xib in Resources */,
-				034FB2FC261C67AB00D55547 /* ListInputedMeals.storyboard in Resources */,
-				038821CE261B245E00954DF3 /* Home.storyboard in Resources */,
 				0390248F2616268D00BEE919 /* LaunchScreen.storyboard in Resources */,
 				84AD16DE261D911B003C06C9 /* LabelTableViewCell.xib in Resources */,
 				0372A647261DA81000E3B4FF /* DetailIngredients.storyboard in Resources */,
 				84967B64261C813E002522DE /* FirstView.storyboard in Resources */,
+				03C7FC6B261EEEA00089C710 /* ListInputMeal.storyboard in Resources */,
+				0376587D261EEAD500E36D4D /* Home.storyboard in Resources */,
 				0390248C2616268D00BEE919 /* Assets.xcassets in Resources */,
 				84967B82261C860D002522DE /* ByIngredients.storyboard in Resources */,
 				039024872616268C00BEE919 /* Main.storyboard in Resources */,
@@ -404,9 +404,9 @@
 				84AD16D3261D64F6003C06C9 /* TableViewCell.swift in Sources */,
 				84AD16DD261D911B003C06C9 /* LabelTableViewCell.swift in Sources */,
 				039024B026162FFA00BEE919 /* HistoryViewController.swift in Sources */,
-				036C8068261AC95C002A5EEA /* ListInputMealsTableViewController.swift in Sources */,
 				84092864261C9CF3004B42DA /* InputManualViewController.swift in Sources */,
 				039024B42616300300BEE919 /* ProfileViewController.swift in Sources */,
+				03C727CE261DF5BA00552BFF /* ListInputMealViewController.swift in Sources */,
 				0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */,
 				84967B85261C87A6002522DE /* ByIngTableViewController.swift in Sources */,
 				84AD16D8261D6B91003C06C9 /* ServingSizeTableViewCell.swift in Sources */,
@@ -418,14 +418,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		038821CC261B245E00954DF3 /* Home.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				038821CD261B245E00954DF3 /* Base */,
-			);
-			name = Home.storyboard;
-			sourceTree = "<group>";
-		};
 		038821E0261B2E9800954DF3 /* Profile.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -43,7 +43,7 @@ class ByIngTableViewController: UITableViewController, UISearchBarDelegate {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(self.data?[indexPath.row] ?? "Row")
-        performSegue(withIdentifier: "DetailByIngredients", sender: self.data?[indexPath.row])
+        performSegue(withIdentifier: "DetailByIngredients", sender: self.filterData?[indexPath.row])
     }
     
     // search
