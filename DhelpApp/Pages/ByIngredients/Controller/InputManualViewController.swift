@@ -29,6 +29,16 @@ class SectionName2{
     }
 }
 
+protocol InputManualViewControllerDelegate {
+    func mealTimeSelected(mealTime: String)
+}
+
+extension InputManualViewController: InputManualViewControllerDelegate{
+    func mealTimeSelected(mealTime: String) {
+        textTest.text = mealTime
+    }
+    
+}
 
 class InputManualViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -39,11 +49,12 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
     var sectionName2 = [SectionName2]()
     
     
-    
+    var namaLabae = ""
     
     @IBOutlet weak var mealTimeTable: UITableView!
     @IBOutlet weak var infoTable: UITableView!
     
+    @IBOutlet weak var textTest: UITextField!
     
     
     override func viewDidLoad() {
@@ -70,6 +81,26 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
     }
     
+    @objc func donePressed(){
+//        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//            let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
+//            if cell.field.text == "Dinner"{
+//                textTest.text = "Makan Malam"
+//            }
+//            return cell
+//        }
+    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        switch tableView.tag {
+//        case 1:
+//            return sectionName.count
+//        case 2:
+//            return 10
+//        default:
+//            return 1
+//        }
+//    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView.tag {
         case 1:
@@ -86,11 +117,13 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
             cell.textLabel?.text = sectionName[indexPath.section].item?[indexPath.row]
+            cell.delegate = self
             return cell
         case 2:
             if indexPath.row > 1{
                 let customCell2 = tableView.dequeueReusableCell(withIdentifier: ServingSizeTableViewCell.identifier, for: indexPath) as!
                 ServingSizeTableViewCell
+                customCell2.textLabel?.text = "Serving Size"
                 return customCell2
             }
             
@@ -184,7 +217,7 @@ extension InputManualViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = "By Ingredients"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed))
         navigationController?.navigationBar.barTintColor = UIColor(named: "Primary")
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]

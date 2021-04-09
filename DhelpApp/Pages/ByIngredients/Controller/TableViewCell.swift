@@ -21,6 +21,10 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate {
 
     static let identifier = "TableViewCell"
     
+    var Makan = ""
+    
+    var delegate: InputManualViewControllerDelegate?
+    
     static func nib() -> UINib {
         return UINib(nibName: "TableViewCell", bundle: nil)
     }
@@ -35,6 +39,7 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate {
         timePicker.dataSource = self
         
         field.inputView = timePicker
+        
         // Initialization code
     }
     
@@ -67,6 +72,11 @@ extension TableViewCell: UIPickerViewDelegate, UIPickerViewDataSource{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         field.text = timeOption[row]
         field.resignFirstResponder()
+        
+        delegate?.mealTimeSelected(mealTime: timeOption[row])
+//        if field.text == "Dinner"{
+//            field.text = "Dinner"
+//        }
     }
     
 }
