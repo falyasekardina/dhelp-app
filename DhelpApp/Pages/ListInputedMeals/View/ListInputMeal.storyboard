@@ -79,7 +79,6 @@
                     </view>
                     <navigationItem key="navigationItem" id="63m-hN-RP2"/>
                     <connections>
-                        <outlet property="addFoodBtnStyling" destination="ll5-qs-v0j" id="ajy-z9-IkV"/>
                         <outlet property="tableView" destination="wrl-SB-VL4" id="toB-4l-oMG"/>
                         <segue destination="vcJ-bZ-jN9" kind="show" identifier="byIngredientPage" id="Oqk-ED-ijh"/>
                     </connections>
