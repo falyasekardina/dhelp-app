@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0341AE402619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */; };
 		0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0341AE422619BB3300FFC68E /* DailyInTake.swift */; };
+		0343CADA2620476700C20F06 /* Intake+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343CAD82620476700C20F06 /* Intake+CoreDataClass.swift */; };
+		0343CADB2620476700C20F06 /* Intake+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0343CAD92620476700C20F06 /* Intake+CoreDataProperties.swift */; };
 		0372A647261DA81000E3B4FF /* DetailIngredients.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0372A646261DA81000E3B4FF /* DetailIngredients.storyboard */; };
 		0376587D261EEAD500E36D4D /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0376587C261EEAD500E36D4D /* Home.storyboard */; };
 		039024802616268C00BEE919 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0390247F2616268C00BEE919 /* AppDelegate.swift */; };
@@ -46,6 +48,8 @@
 /* Begin PBXFileReference section */
 		0341AE3F2619B7E700FFC68E /* DailyIntakeTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyIntakeTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		0341AE422619BB3300FFC68E /* DailyInTake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyInTake.swift; sourceTree = "<group>"; };
+		0343CAD82620476700C20F06 /* Intake+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Intake+CoreDataClass.swift"; sourceTree = "<group>"; };
+		0343CAD92620476700C20F06 /* Intake+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Intake+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		0372A646261DA81000E3B4FF /* DetailIngredients.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DetailIngredients.storyboard; sourceTree = "<group>"; };
 		0376587C261EEAD500E36D4D /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		0390247C2616268C00BEE919 /* DhelpApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DhelpApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +112,15 @@
 				03C727CD261DF5BA00552BFF /* ListInputMealViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		0324F2CE262002FA001E621C /* Intake */ = {
+			isa = PBXGroup;
+			children = (
+				0343CAD82620476700C20F06 /* Intake+CoreDataClass.swift */,
+				0343CAD92620476700C20F06 /* Intake+CoreDataProperties.swift */,
+			);
+			path = Intake;
 			sourceTree = "<group>";
 		};
 		034FB2FA261C679100D55547 /* View */ = {
@@ -213,6 +226,7 @@
 		039024972616273600BEE919 /* ModelGlobal */ = {
 			isa = PBXGroup;
 			children = (
+				0324F2CE262002FA001E621C /* Intake */,
 				039024A726162DF900BEE919 /* Ingredient.swift */,
 			);
 			path = ModelGlobal;
@@ -443,6 +457,7 @@
 				E019B341261F0C120042F432 /* ProfileViewController.swift in Sources */,
 				84AD16DD261D911B003C06C9 /* LabelTableViewCell.swift in Sources */,
 				84092864261C9CF3004B42DA /* InputManualViewController.swift in Sources */,
+				0343CADA2620476700C20F06 /* Intake+CoreDataClass.swift in Sources */,
 				03C727CE261DF5BA00552BFF /* ListInputMealViewController.swift in Sources */,
 				0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */,
 				84967B85261C87A6002522DE /* ByIngTableViewController.swift in Sources */,
@@ -450,6 +465,7 @@
 				84AD16D8261D6B91003C06C9 /* ServingSizeTableViewCell.swift in Sources */,
 				FC68DA14261F345A0016665A /* DetailHistoryViewController.swift in Sources */,
 				0390248A2616268C00BEE919 /* DhelpApp.xcdatamodeld in Sources */,
+				0343CADB2620476700C20F06 /* Intake+CoreDataProperties.swift in Sources */,
 				FC68DA13261F345A0016665A /* HistoryViewController.swift in Sources */,
 				039024A026162B3700BEE919 /* HomeViewController.swift in Sources */,
 			);

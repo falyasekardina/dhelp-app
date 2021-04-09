@@ -7,7 +7,13 @@
 
 import UIKit
 
+protocol TableViewCellDelegate {
+    func textChange(text: String)
+}
+
 class TableViewCell: UITableViewCell, UITextFieldDelegate {
+    
+    var dataPicker = ""
     
     let timePicker = UIPickerView()
     
@@ -39,7 +45,7 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
 }

@@ -6,11 +6,16 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeViewController: UIViewController {
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var intakes: [Intake]!
+    
     // Data
-    let dailyInTakes: [DailyInTake] = [
+    var dailyInTakes: [DailyInTake] = [
         DailyInTake(title: "Breakfast", mealLogo: UIImage(named: "breakfast")!, total: "0gr"),
         DailyInTake(title: "Lunch", mealLogo: UIImage(named: "lunch")!, total: "0gr"),
         DailyInTake(title: "Dinner", mealLogo: UIImage(named: "dinner")!, total: "0gr"),
@@ -58,6 +63,7 @@ class HomeViewController: UIViewController {
         layout.minimumInteritemSpacing = 10
         layout.scrollDirection = .vertical
         collectionView.setCollectionViewLayout(layout, animated: true)
+        fetchData()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -86,6 +92,46 @@ class HomeViewController: UIViewController {
         alertView.layer.cornerRadius = 10
         alertView.layer.borderWidth = 1
         alertView.layer.borderColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+    }
+    
+    func fetchData() {
+        do {
+            let request = Intake.fetchRequest() as NSFetchRequest<Intake>
+            self.intakes = try context.fetch(request)
+            var sugarLevelA = 0.0
+            var sugarLevelB = 0.0
+            var sugarLevelC = 0.0
+            var sugarLevelD = 0.0
+            
+            for dt in self.intakes {
+                switch dt.mealtime {
+                case "Breakfast":
+                    sugarLevelA += dt.sugar
+                case "Lunch":
+                    sugarLevelB += dt.sugar
+                case "Dinner":
+                    sugarLevelC += dt.sugar
+                case "Snack":
+                    sugarLevelD += dt.sugar
+                default:
+                    sugarLevelA = 0.0
+                    sugarLevelB = 0.0
+                    sugarLevelC = 0.0
+                    sugarLevelD = 0.0
+                }
+            }
+            
+            self.dailyInTakes[0].total = "\(sugarLevelA) gr"
+            self.dailyInTakes[1].total = "\(sugarLevelB) gr"
+            self.dailyInTakes[2].total = "\(sugarLevelC) gr"
+            self.dailyInTakes[3].total = "\(sugarLevelD) gr"
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
     }
 }
 
@@ -122,8 +168,6 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
     }
     
-    
-    
     func setupCollectionViewCellLayout(cell: UICollectionViewCell)
     {
         cell.layer.cornerRadius = 20
@@ -133,5 +177,22 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.layer.shadowOffset = CGSize(width: 0, height: 2)
         cell.layer.shadowRadius = 2
     }
-    
+}
+
+protocol TransitionPage {
+    func moveToListPage(mealType: String)
+}
+
+extension HomeViewController: TransitionPage {
+    func moveToListPage(mealType: String) {
+        if mealType == "Breakfast" {
+            print("1")
+        } else if mealType == "Lunch" {
+            print("2")
+        } else if mealType == "Dinner" {
+            print("3")
+        } else if mealType == "Snack" {
+            print("4")
+        }
+    }
 }

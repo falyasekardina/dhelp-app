@@ -70,17 +70,6 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
     }
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        switch tableView.tag {
-//        case 1:
-//            return sectionName.count
-//        case 2:
-//            return 10
-//        default:
-//            return 1
-//        }
-//    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch tableView.tag {
         case 1:
@@ -149,7 +138,7 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         switch tableView.tag {
         case 1:
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
-            view.backgroundColor = #colorLiteral(red: 0.9491460919, green: 0.9487624764, blue: 0.9704342484, alpha: 1)
+            view.backgroundColor = #colorLiteral(red: 0.9491885304, green: 0.9486994147, blue: 0.9747329354, alpha: 1)
             
             let labelName = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.width - 15, height: 40))
             labelName.text = sectionName[section].section
@@ -183,6 +172,10 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
             return 1
         }
     }
+    
+    @objc func doneTapped() {
+        
+    }
 
 }
 
@@ -191,7 +184,7 @@ extension InputManualViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = "By Ingredients"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
         navigationController?.navigationBar.barTintColor = UIColor(named: "Primary")
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
