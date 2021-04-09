@@ -139,8 +139,12 @@
                     <navigationItem key="navigationItem" id="PM9-8f-esD"/>
                     <connections>
                         <outlet property="addFoodTable" destination="bCx-NA-KnZ" id="dDv-ra-MuG"/>
+                        <outlet property="caloriesTxt" destination="OfQ-mM-Nu5" id="Fet-9N-BwL"/>
+                        <outlet property="carboTxt" destination="ydQ-44-yZY" id="8DG-Wz-8tO"/>
                         <outlet property="foodNameInput" destination="Ayh-ZQ-UEs" id="IEL-74-GGH"/>
                         <outlet property="mealTime" destination="Pxc-v8-DmI" id="hwg-eN-O3c"/>
+                        <outlet property="servingSizeTxt" destination="fSa-Xg-LOk" id="ha8-vO-0mL"/>
+                        <outlet property="sugarTxt" destination="oAs-qH-5O3" id="BtA-qT-UOI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fEE-Vn-TlU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

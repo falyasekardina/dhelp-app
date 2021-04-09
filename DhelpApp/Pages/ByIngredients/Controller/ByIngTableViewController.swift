@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class ByIngTableViewController: UITableViewController, UISearchBarDelegate {
 
     @IBOutlet weak var searchBar: UISearchBar!
@@ -20,8 +21,6 @@ class ByIngTableViewController: UITableViewController, UISearchBarDelegate {
         filterData = data
         self.tableView.tableFooterView = UIView(frame: .zero)
     }
-    
-    
 
     // MARK: - Table view data source
 

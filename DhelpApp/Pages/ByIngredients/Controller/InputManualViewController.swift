@@ -171,7 +171,7 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         switch tableView.tag {
         case 1:
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
-            view.backgroundColor = #colorLiteral(red: 0.9491460919, green: 0.9487624764, blue: 0.9704342484, alpha: 1)
+            view.backgroundColor = #colorLiteral(red: 0.9491885304, green: 0.9486994147, blue: 0.9747329354, alpha: 1)
             
             let labelName = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.width - 15, height: 40))
             labelName.text = sectionName[section].section
@@ -206,6 +206,10 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    @objc func doneTapped() {
+        
+    }
+
 }
 
 extension InputManualViewController {
