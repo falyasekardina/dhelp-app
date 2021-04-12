@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol TableViewCellDelegate {
-    func textChange(text: String)
-}
-
 class TableViewCell: UITableViewCell, UITextFieldDelegate {
     
     var dataPicker = ""
@@ -34,12 +30,9 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         field.delegate = self
-        
         timePicker.delegate = self
         timePicker.dataSource = self
-        
         field.inputView = timePicker
-        
         // Initialization code
     }
     

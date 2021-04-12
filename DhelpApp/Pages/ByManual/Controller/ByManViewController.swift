@@ -17,7 +17,7 @@ class ByManViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var sugarTxt: UITextField!
     @IBOutlet weak var servingSizeTxt: UITextField!
     
-    var delegate: TransitionPage?
+//    var delegate: TransitionPage?
     
     var timePicker = UIPickerView()
        
@@ -74,17 +74,8 @@ class ByManViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
             print("Error: \(error)")
         }
         
-        delegate?.moveToListPage(mealType: arrayData[0])
-//        self.navigationController?.popToRootViewController(animated: true)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destinationVC = segue.destination as? ListInputMealViewController {
-            guard let mealtimeName = sender as? String else {
-                return
-            }
-            destinationVC.getTitle = mealtimeName
-        }
+//        delegate?.moveToListPage(mealType: arrayData[0])
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 
