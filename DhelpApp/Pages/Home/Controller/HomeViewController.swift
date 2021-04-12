@@ -31,8 +31,12 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var informationView: UIView!
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
     @IBOutlet weak var totalSugarProgressBar: UIProgressView!
     @IBOutlet weak var totalSugarConsumsionlbl: UILabel!
+    
+    @IBOutlet weak var totalKaloriProgressBar: UIProgressView!
+    @IBOutlet weak var totalKaloriLabel: UILabel!
     
     @IBAction func addBtn(_ sender: UIButton) {
         let optionMenu = UIAlertController(title: nil, message: "Please choose your input preferences", preferredStyle: .actionSheet)
@@ -72,6 +76,9 @@ class HomeViewController: UIViewController {
         fetchData()
         
         totalSugarProgressBar.progress = 0.0
+        totalKaloriProgressBar.progress = 0.0
+        
+        //alertView.isHidden = true
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -106,35 +113,64 @@ class HomeViewController: UIViewController {
         do {
             let request = Intake.fetchRequest() as NSFetchRequest<Intake>
             self.intakes = try context.fetch(request)
+            //sugar
             var sugarLevelA = 0.0
             var sugarLevelB = 0.0
             var sugarLevelC = 0.0
             var sugarLevelD = 0.0
             
+            //kalori
+            var kaloriA = 0
+            var kaloriB = 0
+            var kaloriC = 0
+            var kaloriD = 0
+            
+            
             for dt in self.intakes {
                 
                 if dt.mealtime == "Breakfast" && getDayFormater(dateData: dt.createdat!) == getDayFormater(dateData: currentDate) {
                     sugarLevelA += dt.sugar
+                    kaloriA += Int(dt.calories)
                 } else if dt.mealtime == "Lunch" && getDayFormater(dateData: dt.createdat!) == getDayFormater(dateData: currentDate) {
                     sugarLevelB += dt.sugar
+                    kaloriB += Int(dt.calories)
                 } else if dt.mealtime == "Dinner" && getDayFormater(dateData: dt.createdat!) == getDayFormater(dateData: currentDate) {
                     sugarLevelC += dt.sugar
+                    kaloriC += Int(dt.calories)
                 } else if dt.mealtime == "Snack" && getDayFormater(dateData: dt.createdat!) == getDayFormater(dateData: currentDate) {
                     sugarLevelD += dt.sugar
+                    kaloriD += Int(dt.calories)
                 }
             }
             
+            //sugar
             self.dailyInTakes[0].total = "\(String(format: "%.2f", sugarLevelA)) gr"
             self.dailyInTakes[1].total = "\(String(format: "%.2f", sugarLevelB)) gr"
             self.dailyInTakes[2].total = "\(String(format: "%.2f", sugarLevelC)) gr"
             self.dailyInTakes[3].total = "\(String(format: "%.2f", sugarLevelD)) gr"
             
+            //kalori
+            
             // Update Progress bar Value
             let sugarBarTotal = Float((sugarLevelA + sugarLevelB + sugarLevelC + sugarLevelD) * 0.02)
             if sugarBarTotal != totalSugarProgressBar.progress {
                 totalSugarProgressBar.progress = sugarBarTotal
+                print("\(sugarBarTotal)")
+                if sugarBarTotal > 0.80{
+                    alertView.isHidden = false
+                }
             }
-            totalSugarConsumsionlbl.text = "\(String(format: "%.2f", (sugarLevelA + sugarLevelB + sugarLevelC + sugarLevelD))) gr"
+            
+            totalSugarConsumsionlbl.text = "\(String(format: "%.f", (sugarLevelA + sugarLevelB + sugarLevelC + sugarLevelD))) gr"
+            
+            print("\(kaloriA + kaloriB + kaloriC + kaloriD)")
+            // Kalori
+            let kaloriBarTotal = Float((kaloriA + kaloriB + kaloriC + kaloriD)) * 0.001
+            print("\(kaloriBarTotal)")
+            if kaloriBarTotal != totalKaloriProgressBar.progress{
+                totalKaloriProgressBar.progress = kaloriBarTotal
+            }
+            totalKaloriLabel.text = "\(String(format: "%.f", (kaloriBarTotal * 1000))) kcl"
             collectionView.reloadData()
         } catch {
             print("Error: \(error)")
