@@ -39,8 +39,6 @@ class ProfileViewController: UIViewController{
         super.viewDidLoad()
         
         loadDataUser()
-        print(sex)
-        print("blogg")
         
         tableProfile.isScrollEnabled = false
         tableProfile.allowsSelection = false

@@ -17,6 +17,14 @@ class HomeViewController: UIViewController {
     var intakes: [Intake]!
     
     var totalSugar = 0.0 // for progress bar calculation
+    var dob = ""
+    var sex = ""
+    var height = ""
+    var weight = ""
+    var act = ""
+    
+    var kalori : Float = 0
+    var gula : Float = 0
     
     // Data
     var dailyInTakes: [DailyInTake] = [
@@ -54,6 +62,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        itungKeperluan()
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
         setupInformationView()
         setupAlertView()
@@ -73,6 +83,94 @@ class HomeViewController: UIViewController {
         fetchData()
         
         totalSugarProgressBar.progress = 0.0
+    }
+    
+    func itungKeperluan(){
+        let defaults = UserDefaults.standard
+        dob = defaults.object(forKey: "dataDob") as! String
+        sex = defaults.object(forKey: "dataGender") as! String
+        height = defaults.object(forKey: "dataHeight") as! String
+        weight = defaults.object(forKey: "dataWeight") as! String
+        act = defaults.object(forKey: "dataAct") as! String
+        
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "MMM dd, yyyy"
+        dateFormater.timeStyle = .none
+        dateFormater.dateStyle = .long
+        let tanggalSekarang = dateFormater.string(from: Date())
+        
+        let startDate = dateFormater.date(from: dob)
+        let endDate = dateFormater.date(from: tanggalSekarang)
+        var diff = Calendar.current.dateComponents([.year], from: startDate!, to: endDate!).year
+        
+        print(diff)
+        
+        if diff! >= 4 && diff! <= 6{
+            gula = 19
+        }else if diff! >= 7 && diff! <= 10{
+            gula = 24
+        }else if diff! >= 11 && diff! <= 12{
+            gula = 30
+        }else if(diff! > 12){
+            gula = 50
+        }
+        
+        defaults.setValue(gula, forKey: "dataGula")
+        print(gula)
+        
+        let tb = Float(height)!
+        let tbMeter = tb/100
+        let pow = tbMeter * tbMeter
+        var a : Float = 0
+        var b : Float = 0
+        
+        switch sex {
+        case "Male":
+            a = pow * 22.5
+            b = 30
+        case "Female":
+            a = pow * 21
+            b = 25
+        default:
+            return
+        }
+        
+        let c = a * b
+        var d : Float = 0
+        
+        if act == "Sedentary (Never/Rarely Exercise)"{
+            d = 20/100
+        }else if act == "Moderately (Exercise 1-2x / Week)"{
+            d = 30 / 100
+        }else if act == "Vigorously (Exercise 3-5x / Week)"{
+            d = 40 / 100
+        }else if act == "Extremely Exercise (6-7x / Week)"{
+            d = 50 / 100
+        }
+        
+        let e = c * d
+        let f : Float = 10 / 100
+        let g = c * f
+        var h : Float = 0
+        
+        if diff! < 40{
+            h = 0 / 100
+        }else if diff! >= 40 && diff! <= 50{
+            h = 5 / 100
+        }else if diff! >= 51 && diff! <= 60{
+            h = 10 / 100
+        }else if diff! >= 61 && diff! <= 70{
+            h = 15 / 100
+        }else if diff! >= 71 && diff! <= 80{
+            h = 20 / 100
+        }else if diff! >= 81 && diff! <= 90{
+            h = 25 / 100
+        }
+        
+        let i = c * h
+        kalori = c + e + g - i
+        print(kalori)
+        defaults.setValue(kalori, forKey: "dataKalori")
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
