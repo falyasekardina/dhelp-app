@@ -114,7 +114,7 @@ extension ListInputMealViewController: UITableViewDelegate, UITableViewDataSourc
             self.intakes = [Intake]()
 
             for dt in meals {
-                if (dt.mealtime == getTitle) {
+                if (dt.mealtime == getTitle && getDayFormater(dateData: dt.createdat!) == getDayFormater(dateData: currentDate)) {
                     self.intakes.append(dt)
                 }
             }
@@ -125,6 +125,13 @@ extension ListInputMealViewController: UITableViewDelegate, UITableViewDataSourc
         } catch {
             print("Error: \(error)")
         }
+    }
+    
+    func getDayFormater(dateData: Date) -> String {
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "yyyy-MM-dd"
+        let newFormat = dateFormater.string(from: dateData)
+        return newFormat
     }
 }
 
