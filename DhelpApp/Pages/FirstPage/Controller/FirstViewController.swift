@@ -13,11 +13,26 @@ class FirstViewController: UIViewController {
     @IBOutlet weak var Sex: UITextField!
     @IBOutlet weak var buttonSubmit: UIButton!
     @IBOutlet weak var ActivityLevel: UITextField!
+    @IBOutlet weak var txtHeight: UITextField!
+    @IBOutlet weak var txtWeight: UITextField!
+    
+    var dataDob = ""
+    var dataGender = ""
+    var dataAct = ""
+    var sesi: Bool?
+    
+    var dob = ""
+    var sex = ""
+    var height = ""
+    var weight = ""
+    var act = ""
     
     let datePicker = UIDatePicker()
     
     let sexOption = ["Male","Female","Other"]
     var sexPicker = UIPickerView()
+    
+    var arrayData = ["","","","",""]
     
     let levelOption = ["Sedentary (Never/Rarely Exercise)","Moderately (Exercise 1-2x / Week)","Vigorously Exercise 3-5x / Week)","Extremely Exercise 6-7x / Week)"]
     let levelPicker = UIPickerView()
@@ -26,6 +41,18 @@ class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //
+        //        sesi = UserDefaults.standard.object(forKey: "regis") as? Bool
+        //
+        //        print(sesi)
+        //
+        //        if sesi == true{
+        //            self.window = UIWindow(frame: UIScreen.main.bounds)
+        //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        //            let controller = storyboard.instantiateViewController(withIdentifier: "iniMainHome")
+        //
+        //        }
         
         //activity picker
         levelPicker.delegate = self
@@ -50,8 +77,25 @@ class FirstViewController: UIViewController {
     }
     
     @IBAction func submitButton(_ sender: Any) {
-//        let move = storyboard?.instantiateViewController(withIdentifier: "Home") as! HomeViewController
-//                    navigationController?.setViewControllers([move], animated: true)
+        sesi = true
+        
+        let defaults = UserDefaults.standard
+        defaults.setValue(sesi, forKey: "regis")
+        defaults.setValue(dataDob, forKey: "dataDob")
+        defaults.setValue(dataGender, forKey: "dataGender")
+        defaults.setValue(txtHeight.text, forKey: "dataHeight")
+        defaults.setValue(txtWeight.text, forKey: "dataWeight")
+        defaults.setValue(dataAct, forKey: "dataAct")
+        defaults.synchronize()
+    }
+    
+    func loadDataUser(){
+        let defaults = UserDefaults.standard
+        dob = defaults.object(forKey: "dataDob") as! String
+        sex = defaults.object(forKey: "dataGender") as! String
+        height = defaults.object(forKey: "dataHeight") as! String
+        weight = defaults.object(forKey: "dataWeight") as! String
+        act = defaults.object(forKey: "dataAct") as! String
     }
     
     func creatToolbar() -> UIToolbar{
@@ -78,6 +122,7 @@ class FirstViewController: UIViewController {
         
         self.DateOfBirth.text = dateFormatter.string(from: datePicker.date)
         self.view.endEditing(true)
+        dataDob = dateFormatter.string(from: datePicker.date)
     }
 
 }
@@ -114,9 +159,11 @@ extension FirstViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         switch pickerView.tag {
         case 1:
             Sex.text = sexOption[row]
+            dataGender = sexOption[row]
             Sex.resignFirstResponder()
         case 2:
             ActivityLevel.text = levelOption[row]
+            dataAct = levelOption[row]
             ActivityLevel.resignFirstResponder()
         default:
             return
