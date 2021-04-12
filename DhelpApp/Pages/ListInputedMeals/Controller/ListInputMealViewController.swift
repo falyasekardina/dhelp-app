@@ -6,19 +6,15 @@
 //
 
 import UIKit
+import CoreData
 
 class ListInputMealViewController: UIViewController {
     
     var getTitle = ""
     
-    let names = [
-        "Gilang Adrian",
-        "Michael Tanakoman",
-        "Michelle Tanakoman",
-        "Aqshal Wibisono"
-    ]
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    let angka = [18, 24, 50, 40]
+    var intakes: [Intake]!
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -27,6 +23,9 @@ class ListInputMealViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: .zero)
+        
+        // Fecth Data
+        fetchData()
         // Do any additional setup after loading the view.
     }
     
@@ -60,24 +59,20 @@ extension ListInputMealViewController: UITableViewDelegate, UITableViewDataSourc
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return names.count
+        return intakes?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        let array = angka.map{
-            String($0)
-        }
-        
-        cell.textLabel?.text = names[indexPath.row]
-        cell.detailTextLabel?.text = array[indexPath.row] + " gr"
+        cell.textLabel?.text = self.intakes![indexPath.row].name
+        cell.detailTextLabel?.text = "\(self.intakes![indexPath.row].sugar) gr"
         return cell
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: "Delete") { (contextualAction, view, actionPerformed: (Bool) -> ()) in
-            self.deleteTapped()
+            self.deleteTapped(indexData: indexPath.row)
         }
         return UISwipeActionsConfiguration(actions: [delete])
     }
@@ -86,11 +81,19 @@ extension ListInputMealViewController: UITableViewDelegate, UITableViewDataSourc
         return 60
     }
     
-    @objc func deleteTapped(){
+    @objc func deleteTapped(indexData: Int){
         let alertController = UIAlertController(title: "Action Sheet", message: "Are you sure want to delete this ingredient?", preferredStyle: .actionSheet)
         
         let deleteButton = UIAlertAction(title: "Delete", style: .destructive) { (action) -> Void in
-            print("Delete button tapped")
+            let note = self.intakes![indexData]
+            self.context.delete(note)
+            do {
+                try self.context.save()
+            } catch {
+                print("Error: \(error)")
+            }
+            
+            self.fetchData()
         }
         
         let cancelButton = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
@@ -102,6 +105,33 @@ extension ListInputMealViewController: UITableViewDelegate, UITableViewDataSourc
         
         alertController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
         present(alertController, animated: true)
+    }
+    
+    func fetchData() {
+        do {
+            let request = Intake.fetchRequest() as NSFetchRequest<Intake>
+            let meals = try context.fetch(request)
+            self.intakes = [Intake]()
+
+            for dt in meals {
+                if (dt.mealtime == getTitle && getDayFormater(dateData: dt.createdat!) == getDayFormater(dateData: currentDate)) {
+                    self.intakes.append(dt)
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+    
+    func getDayFormater(dateData: Date) -> String {
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "yyyy-MM-dd"
+        let newFormat = dateFormater.string(from: dateData)
+        return newFormat
     }
 }
 

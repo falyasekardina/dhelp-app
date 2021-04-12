@@ -9,6 +9,8 @@ import UIKit
 
 class TableViewCell: UITableViewCell, UITextFieldDelegate {
     
+    var dataPicker = ""
+    
     let timePicker = UIPickerView()
     
     let timeOption = ["Breakfast","Lunch","Dinner","Snack"]
@@ -28,12 +30,9 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         field.delegate = self
-        
         timePicker.delegate = self
         timePicker.dataSource = self
-        
         field.inputView = timePicker
-        
         // Initialization code
     }
     
@@ -44,7 +43,7 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
     
 }

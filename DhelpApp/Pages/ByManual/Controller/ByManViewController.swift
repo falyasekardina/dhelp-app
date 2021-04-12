@@ -12,12 +12,20 @@ class ByManViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
     @IBOutlet weak var addFoodTable: UITableView!
     @IBOutlet weak var mealTime: UITextField!
     @IBOutlet weak var foodNameInput: UITextField!
+    @IBOutlet weak var caloriesTxt: UITextField!
+    @IBOutlet weak var carboTxt: UITextField!
+    @IBOutlet weak var sugarTxt: UITextField!
+    @IBOutlet weak var servingSizeTxt: UITextField!
+    
+//    var delegate: TransitionPage?
     
     var timePicker = UIPickerView()
        
     let timeOption = ["Breakfast","Lunch","Dinner","Snack"]
     
-    var arrayData  = ["", "", "", "", "", ""]
+    var arrayData  = [""]
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +51,32 @@ class ByManViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         arrayData[0] = timeOption[row]
         addFoodTable.reloadData()
     }
+    
+    @objc func doneTapped() {
+        let calorieVal = Int64(caloriesTxt.text ?? "") ?? 0
+        let carboVal = Double(carboTxt.text ?? "") ?? 0.0
+        let sugarVal = Double(sugarTxt.text ?? "") ?? 0.0
+        let servingSizeManual = servingSizeTxt.text ?? ""
 
+        let newIntake = Intake(context: self.context)
+        newIntake.name = foodNameInput.text
+        newIntake.calories = calorieVal
+        newIntake.carbs = carboVal
+        newIntake.sugar = sugarVal
+        newIntake.mealtime = arrayData[0]
+        newIntake.servingsize = 0.0
+        newIntake.manualsize = servingSizeManual
+        newIntake.createdat = Date()
+
+        do {
+            try self.context.save()
+        } catch {
+            print("Error: \(error)")
+        }
+        
+//        delegate?.moveToListPage(mealType: arrayData[0])
+        self.navigationController?.popToRootViewController(animated: true)
+    }
 }
 
 extension ByManViewController: UITableViewDelegate, UITableViewDataSource {
@@ -78,7 +111,6 @@ extension ByManViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             let cellTime = tableView.dequeueReusableCell(withIdentifier: "time", for: indexPath)
             cellTime.textLabel?.text = "Time"
-            print(arrayData[0])
             if arrayData[0] == "" {
                 cellTime.detailTextLabel?.text = "Required"
             }
@@ -148,7 +180,7 @@ extension ByManViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = "Add Food"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
         navigationController?.navigationBar.barTintColor = UIColor(named: "Primary")
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]

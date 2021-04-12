@@ -6,22 +6,33 @@
 //
 
 import UIKit
+import CoreData
+
+let currentDate = Date()
 
 class HomeViewController: UIViewController {
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var intakes: [Intake]!
+    
+    var totalSugar = 0.0 // for progress bar calculation
+    
     // Data
-    let dailyInTakes: [DailyInTake] = [
+    var dailyInTakes: [DailyInTake] = [
         DailyInTake(title: "Breakfast", mealLogo: UIImage(named: "breakfast")!, total: "0gr"),
         DailyInTake(title: "Lunch", mealLogo: UIImage(named: "lunch")!, total: "0gr"),
         DailyInTake(title: "Dinner", mealLogo: UIImage(named: "dinner")!, total: "0gr"),
         DailyInTake(title: "Snack", mealLogo: UIImage(named: "snack")!, total: "0gr")
     ]
-
+    
     // Component
     @IBOutlet weak var dateLbl: UILabel!
     @IBOutlet weak var informationView: UIView!
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var totalSugarProgressBar: UIProgressView!
+    @IBOutlet weak var totalSugarConsumsionlbl: UILabel!
     
     @IBAction func addBtn(_ sender: UIButton) {
         let optionMenu = UIAlertController(title: nil, message: "Please choose your input preferences", preferredStyle: .actionSheet)
@@ -59,6 +70,9 @@ class HomeViewController: UIViewController {
         layout.minimumInteritemSpacing = 10
         layout.scrollDirection = .vertical
         collectionView.setCollectionViewLayout(layout, animated: true)
+        fetchData()
+        
+        totalSugarProgressBar.progress = 0.0
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -87,6 +101,57 @@ class HomeViewController: UIViewController {
         alertView.layer.cornerRadius = 10
         alertView.layer.borderWidth = 1
         alertView.layer.borderColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+    }
+    
+    func fetchData() {
+        do {
+            let request = Intake.fetchRequest() as NSFetchRequest<Intake>
+            self.intakes = try context.fetch(request)
+            var sugarLevelA = 0.0
+            var sugarLevelB = 0.0
+            var sugarLevelC = 0.0
+            var sugarLevelD = 0.0
+            
+            for dt in self.intakes {
+                
+                if dt.mealtime == "Breakfast" && getDayFormater(dateData: dt.createdat!) == getDayFormater(dateData: currentDate) {
+                    sugarLevelA += dt.sugar
+                } else if dt.mealtime == "Lunch" && getDayFormater(dateData: dt.createdat!) == getDayFormater(dateData: currentDate) {
+                    sugarLevelB += dt.sugar
+                } else if dt.mealtime == "Dinner" && getDayFormater(dateData: dt.createdat!) == getDayFormater(dateData: currentDate) {
+                    sugarLevelC += dt.sugar
+                } else if dt.mealtime == "Snack" && getDayFormater(dateData: dt.createdat!) == getDayFormater(dateData: currentDate) {
+                    sugarLevelD += dt.sugar
+                }
+            }
+            
+            self.dailyInTakes[0].total = "\(String(format: "%.2f", sugarLevelA)) gr"
+            self.dailyInTakes[1].total = "\(String(format: "%.2f", sugarLevelB)) gr"
+            self.dailyInTakes[2].total = "\(String(format: "%.2f", sugarLevelC)) gr"
+            self.dailyInTakes[3].total = "\(String(format: "%.2f", sugarLevelD)) gr"
+            
+            // Update Progress bar Value
+            let sugarBarTotal = Float((sugarLevelA + sugarLevelB + sugarLevelC + sugarLevelD) * 0.02)
+            if sugarBarTotal != totalSugarProgressBar.progress {
+                totalSugarProgressBar.progress = sugarBarTotal
+            }
+            totalSugarConsumsionlbl.text = "\(String(format: "%.2f", (sugarLevelA + sugarLevelB + sugarLevelC + sugarLevelD))) gr"
+            collectionView.reloadData()
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+    
+    func getDayFormater(dateData: Date) -> String {
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "yyyy-MM-dd"
+        let newFormat = dateFormater.string(from: dateData)
+        return newFormat
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        fetchData()
     }
 }
 
@@ -121,9 +186,11 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             }
             destinationVC.getTitle = ingredient
         }
+        
+        if let destinationVCSec = segue.destination as? ByIngTableViewController {
+            destinationVCSec.delegate = self
+        }
     }
-    
-    
     
     func setupCollectionViewCellLayout(cell: UICollectionViewCell)
     {
@@ -134,5 +201,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.layer.shadowOffset = CGSize(width: 0, height: 2)
         cell.layer.shadowRadius = 2
     }
-    
+}
+
+protocol HomeTransitionDelegate {
+    func moveToHomePage(controller: UIViewController, type: String)
+}
+
+extension HomeViewController: HomeTransitionDelegate {
+    func moveToHomePage(controller: UIViewController, type: String) {
+        navigationController?.popToRootViewController(animated: true)
+        self.performSegue(withIdentifier: "ListInputMeal", sender: type)
+    }
 }

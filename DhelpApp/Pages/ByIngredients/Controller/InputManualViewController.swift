@@ -31,16 +31,25 @@ class SectionName2{
 
 protocol InputManualViewControllerDelegate {
     func mealTimeSelected(mealTime: String)
+    func servingSizeData(servingSize: String)
 }
 
-extension InputManualViewController: InputManualViewControllerDelegate{
+extension InputManualViewController: InputManualViewControllerDelegate {
     func mealTimeSelected(mealTime: String) {
-        textTest.text = mealTime
+        mealTimeValue = mealTime
     }
     
+    func servingSizeData(servingSize: String) {
+        print("Serving Size Data \(servingSize)")
+        servingSizeValues = servingSize
+    }
 }
 
+
+
 class InputManualViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var data: Ingredient?
 
@@ -49,12 +58,15 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
     var sectionName2 = [SectionName2]()
     
     
-    var namaLabae = ""
+    var mealTimeValue = ""
+    var servingSizeValues = ""
     
     @IBOutlet weak var mealTimeTable: UITableView!
     @IBOutlet weak var infoTable: UITableView!
     
     @IBOutlet weak var textTest: UITextField!
+    
+    var delegate: TransitionPageDelegate?
     
     
     override func viewDidLoad() {
@@ -82,23 +94,39 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @objc func donePressed(){
-//        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
-//            if cell.field.text == "Dinner"{
-//                textTest.text = "Makan Malam"
-//            }
-//            return cell
-//        }
+        let foodName = data!.name
+        let calorieVal = Int64(data!.calorie)
+        let carboVal = Double(data!.carbs)
+        let sugarVal = Double(data!.sugar)
+        let size = Double(servingSizeValues) // Harus Ambil Dr XIB file
+
+        let newIntake = Intake(context: self.context)
+        newIntake.name = foodName
+        newIntake.calories = calorieVal
+        newIntake.carbs = carboVal
+        newIntake.sugar = sugarVal
+        newIntake.mealtime = mealTimeValue
+        newIntake.servingsize = size ?? 0.0
+        newIntake.manualsize = ""
+        newIntake.createdat = Date()
+        print(newIntake)
+
+        do {
+            try self.context.save()
+        } catch {
+            print("Error: \(error)")
+        }
+
+        delegate?.moveToListPage(controller: self, type: mealTimeValue)
     }
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        switch tableView.tag {
-//        case 1:
-//            return sectionName.count
-//        case 2:
-//            return 10
-//        default:
-//            return 1
-//        }
+    
+//    // Date() => 2021-04-11 08:04:00 +0000
+//    func stringToDate(stringDate: String) -> Date {
+//        stringToDate(stringDate: "10-04-2021")
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.locale = Locale(identifier: "UTC")
+//        dateFormatter.dateFormat = "dd-MM-yyyy"
+//        return dateFormatter.date(from: stringDate)!
 //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -123,6 +151,7 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
             if indexPath.row > 1{
                 let customCell2 = tableView.dequeueReusableCell(withIdentifier: ServingSizeTableViewCell.identifier, for: indexPath) as!
                 ServingSizeTableViewCell
+                customCell2.delegate = self
                 customCell2.textLabel?.text = "Serving Size"
                 return customCell2
             }
@@ -171,7 +200,7 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         switch tableView.tag {
         case 1:
             let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 40))
-            view.backgroundColor = #colorLiteral(red: 0.9491460919, green: 0.9487624764, blue: 0.9704342484, alpha: 1)
+            view.backgroundColor = #colorLiteral(red: 0.9491885304, green: 0.9486994147, blue: 0.9747329354, alpha: 1)
             
             let labelName = UILabel(frame: CGRect(x: 15, y: 0, width: view.frame.width - 15, height: 40))
             labelName.text = sectionName[section].section
@@ -205,7 +234,6 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
             return 1
         }
     }
-    
 }
 
 extension InputManualViewController {
