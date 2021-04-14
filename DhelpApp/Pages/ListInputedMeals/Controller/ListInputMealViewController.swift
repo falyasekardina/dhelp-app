@@ -8,7 +8,14 @@
 import UIKit
 import CoreData
 
-class ListInputMealViewController: UIViewController {
+
+
+class ListInputMealViewController: UIViewController, TransitionPageDelegate {
+    func moveToListPage(controller: UIViewController, type: String) {
+        print("Haloo")
+        tableView.reloadData()
+    }
+    
     
     var getTitle = ""
     
@@ -16,42 +23,38 @@ class ListInputMealViewController: UIViewController {
     
     var intakes: [Intake]!
     
+    var data: [Ingredient]?
+    
+    
     @IBOutlet weak var tableView: UITableView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView(frame: .zero)
+        parseJson()
+        
+        tableView.reloadData()
         
         // Fecth Data
         fetchData()
         // Do any additional setup after loading the view.
     }
-    
-//    @IBAction func addFoodBtn(_ sender: UIButton) {
-//        let optionMenu = UIAlertController(title: nil, message: "Please choose your input preferences", preferredStyle: .actionSheet)
-//        let byIngredients = UIAlertAction(title: "By Ingredient", style: .default) { action in
-//            self.performSegue(withIdentifier: "byIngredientPage", sender: self)
-//        }
-//        let manualInput = UIAlertAction(title: "Manual Input", style: .default) { action in
-//            print("Manual Input")
-//        }
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-//
-//        optionMenu.addAction(byIngredients)
-//        optionMenu.addAction(manualInput)
-//        optionMenu.addAction(cancelAction)
-//        optionMenu.view.addSubview(UIView())
-//        self.present(optionMenu, animated: false)
-//    }
 }
 
 extension ListInputMealViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("you tapped me!")
+        if self.intakes![indexPath.row].manualsize == ""
+        {
+            performSegue(withIdentifier: "goToEdit", sender: self.intakes![indexPath.row])
+        }
+        else{
+            performSegue(withIdentifier: "goToManual", sender: self.intakes![indexPath.row])
+        }
     }
 
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -68,6 +71,35 @@ extension ListInputMealViewController: UITableViewDelegate, UITableViewDataSourc
         cell.textLabel?.text = self.intakes![indexPath.row].name
         cell.detailTextLabel?.text = "\(self.intakes![indexPath.row].sugar) gr"
         return cell
+    }
+    
+    
+    func parseJson(){
+        guard let path = Bundle.main.path(forResource: "Ingredients", ofType: "json") else {
+            return
+        }
+        
+        let url = URL(fileURLWithPath: path)
+        do {
+            let jsonData = try Data(contentsOf: url)
+            self.data = try JSONDecoder().decode([Ingredient].self, from: jsonData)
+        } catch {
+            print("Error: \(error)")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? EditInputViewController {
+            guard let dataIngredient = sender as? Intake else { return }
+            destinationVC.dataIntakes = dataIngredient
+            destinationVC.delegate = self
+        }
+        
+        if let destinationVC = segue.destination as? EditManualViewController {
+            guard let dataIngredient = sender as? Intake else { return }
+            destinationVC.dataIntakes = dataIngredient
+            destinationVC.delegate = self
+        }
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
@@ -149,6 +181,12 @@ extension ListInputMealViewController {
         navigationController?.navigationBar.barTintColor = UIColor(named: "Primary")
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        fetchData()
+        tableView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -157,3 +195,5 @@ extension ListInputMealViewController {
         self.tabBarController?.tabBar.isHidden = false
     }
 }
+
+

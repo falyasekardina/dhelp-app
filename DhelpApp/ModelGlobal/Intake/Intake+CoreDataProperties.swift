@@ -2,7 +2,7 @@
 //  Intake+CoreDataProperties.swift
 //  DhelpApp
 //
-//  Created by Reza Harris on 09/04/21.
+//  Created by Dion Lamilga on 13/04/21.
 //
 //
 
@@ -24,6 +24,7 @@ extension Intake {
     @NSManaged public var name: String?
     @NSManaged public var servingsize: Double
     @NSManaged public var sugar: Double
+    @NSManaged public var id: UUID?
 
 }
 
