@@ -19,13 +19,11 @@ class ProfileViewController: UIViewController{
     @IBOutlet weak var btnLevel: UITextField!
     
     var boolBtn = false
-    var dob = "20 July 2000"
-    var sex = "Male"
-    var height = 180
-    var weight = 60
-    var act = "Moderately Active"
-    
-    var arrayData = ["January 15, 2021","Male","180","60","Moderately Active (Exercise 1-2x / Week)"]
+    var dob = ""
+    var sex = ""
+    var height = ""
+    var weight = ""
+    var act = ""
     
     var tableData = ""
     
@@ -39,6 +37,8 @@ class ProfileViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadDataUser()
         
         tableProfile.isScrollEnabled = false
         tableProfile.allowsSelection = false
@@ -66,6 +66,35 @@ class ProfileViewController: UIViewController{
         
         btnSex.inputView = sexPicker
         btnLevel.inputView = levelPicker
+        
+        txtWeight.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        txtHeight.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        validateView()
+    }
+    
+    func validateView(){
+        if tableData == "edit"{
+            if txtWeight.text != "" && txtHeight.text != ""{
+                btnEdit.isEnabled = true
+            }else{
+                btnEdit.isEnabled = false
+            }
+        }
+    }
+    
+    func loadDataUser(){
+        let defaults = UserDefaults.standard
+        
+        dob = defaults.object(forKey: "dataDob") as! String
+        sex = defaults.object(forKey: "dataGender") as! String
+        height = defaults.object(forKey: "dataHeight") as! String
+        weight = defaults.object(forKey: "dataWeight") as! String
+        act = defaults.object(forKey: "dataAct") as! String
+        
     }
     
     func createDatePicker(){
@@ -92,7 +121,7 @@ class ProfileViewController: UIViewController{
         
         self.btnDob.text = dateFormatter.string(from: datePicker.date)
         self.view.endEditing(true)
-        arrayData[0] = dateFormatter.string(from: datePicker.date)
+        dob = dateFormatter.string(from: datePicker.date)
         tableProfile.reloadData()
     }
     
@@ -110,10 +139,10 @@ class ProfileViewController: UIViewController{
             btnLevel.isHidden = false
 
             txtHeight.isHidden = false
-            txtHeight.text = String(arrayData[2])
+            txtHeight.text = height
 
             txtWeight.isHidden = false
-            txtWeight.text = String(arrayData[3])
+            txtWeight.text = weight
 
             print(tableData)
             tableProfile.reloadData()
@@ -127,14 +156,22 @@ class ProfileViewController: UIViewController{
             btnSex.isHidden = true
             btnLevel.isHidden = true
             
+            btnDob.resignFirstResponder()
+            btnSex.resignFirstResponder()
+            btnLevel.resignFirstResponder()
+            
+            let defaults = UserDefaults.standard
+            defaults.setValue(dob, forKey: "dataDob")
+            defaults.setValue(sex, forKey: "dataGender")
+            defaults.setValue(txtHeight.text, forKey: "dataHeight")
+            defaults.setValue(txtWeight.text, forKey: "dataWeight")
+            defaults.setValue(act, forKey: "dataAct")
+            
             txtHeight.isHidden = true
             txtWeight.isHidden = true
             
-            arrayData[2] = txtHeight.text!
-            arrayData[3] = txtWeight.text!
-            
-            
             print(tableData)
+            loadDataUser()
             tableProfile.reloadData()
         }
     }
@@ -169,11 +206,11 @@ extension ProfileViewController: UIPickerViewDelegate, UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView.tag == 1{
-            arrayData[1] = sexOption[row]
+            sex = sexOption[row]
             btnSex.resignFirstResponder()
             tableProfile.reloadData()
         }else if pickerView.tag == 2{
-            arrayData[4] = levelOption[row]
+            act = levelOption[row]
             btnLevel.resignFirstResponder()
             tableProfile.reloadData()
         }
@@ -203,38 +240,38 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
         if tableData == "none"{
             if indexPath.row == 0{
                 cell.textLabel?.text = "Date of Birth"
-                cell.detailTextLabel?.text = arrayData[0]
+                cell.detailTextLabel?.text = dob
                 cell.detailTextLabel?.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
                 cell.accessoryType = .none
             }else if indexPath.row == 1{
                 cell.textLabel?.text = "Sex"
-                cell.detailTextLabel?.text = arrayData[1]
+                cell.detailTextLabel?.text = sex
                 cell.detailTextLabel?.resignFirstResponder()
                 cell.detailTextLabel?.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
                 cell.accessoryType = .none
             }else if indexPath.row == 2{
                 cell.textLabel?.text = "Height"
-                cell.detailTextLabel?.text = "\(arrayData[2]) cm"
+                cell.detailTextLabel?.text = "\(height) cm"
                 cell.detailTextLabel?.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             }else if indexPath.row == 3{
                 cell.textLabel?.text = "Weight"
-                cell.detailTextLabel?.text = "\(arrayData[3]) kg"
+                cell.detailTextLabel?.text = "\(weight) kg"
                 cell.detailTextLabel?.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             }else if indexPath.row == 4{
                 cell.textLabel?.text = "Activity Level"
-                cell.detailTextLabel?.text = arrayData[4]
+                cell.detailTextLabel?.text = act
                 cell.detailTextLabel?.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
                 cell.accessoryType = .none
             }
         }else if tableData == "edit"{
             if indexPath.row == 0{
                 cell.textLabel?.text = "Date of Birth"
-                cell.detailTextLabel?.text = arrayData[0]
+                cell.detailTextLabel?.text = dob
                 cell.detailTextLabel?.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
                 cell.accessoryType = .disclosureIndicator
             }else if indexPath.row == 1{
                 cell.textLabel?.text = "Sex"
-                cell.detailTextLabel?.text = arrayData[1]
+                cell.detailTextLabel?.text = sex
                 cell.detailTextLabel?.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
                 cell.accessoryType = .disclosureIndicator
             }else if indexPath.row == 2{
@@ -247,7 +284,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate{
                 cell.detailTextLabel?.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
             }else if indexPath.row == 4{
                 cell.textLabel?.text = "Activity Level"
-                cell.detailTextLabel?.text = arrayData[4]
+                cell.detailTextLabel?.text = act
                 cell.detailTextLabel?.textColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
                 cell.accessoryType = .disclosureIndicator
             }

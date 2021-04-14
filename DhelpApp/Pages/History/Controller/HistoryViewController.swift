@@ -16,17 +16,13 @@ class HistoryViewController: UIViewController {
     
     var selectedMonth : String?
     
-    //    let date1 = generateDates(dates: "2020-08-21")
-    
-    //    var month : [DataTanggal] = []
-    
     @IBOutlet weak var detailHistoryCell: UITableViewCell!
     
     @IBOutlet weak var historyTable: UITableView!
     
     @IBOutlet weak var pickMonth: UITextField!
     
-    let monthPicker = UIDatePicker()
+    var monthPicker = UIDatePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,28 +33,20 @@ class HistoryViewController: UIViewController {
         createMonthPicker()
     }
     
-    //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    //        let destination = UI(title: "detailHistory", style: .default) { action in
-    //            self.performSegue(withIdentifier: "", sender: self)
-    //        }
-    //    }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         return "SUGAR LEVEL CONSUMED PER MONTH"
     }
     
     func createMonthPicker(){
-        
         pickMonth.textAlignment = .center
         
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
         
-        let monthPicker = UIDatePicker.init(frame:CGRect(x:0,y:0,width: self.view.bounds.width, height: 100))
-        
+        monthPicker = UIDatePicker.init(frame:CGRect(x:0,y:0,width: self.view.bounds.width, height: 100))
         
         let buttonDone = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(pickDone))
-        
         
         toolbar.setItems([buttonDone], animated: true)
         
@@ -75,7 +63,6 @@ class HistoryViewController: UIViewController {
     
     
     @objc func pickDone(){
-        self.intakes = [DataHistory]()
         let choosedMonth = getFormater(dateData: monthPicker.date, month: true)
         let choosedYear = getFormater(dateData: monthPicker.date, month: false)
         
@@ -86,21 +73,42 @@ class HistoryViewController: UIViewController {
         selectedMonth = pickMonthFormat.string(from: monthPicker.date) // Picker Selected Not Working, just choose current date
         pickMonth.text = pickMonthFormat.string(from: monthPicker.date)
         
-//        do {
-//            let request = Intake.fetchRequest() as NSFetchRequest<Intake>
-//            let mealData = try context.fetch(request)
-//            for dt in mealData {
-//                if getFormater(dateData: dt.createdat!, month: true) == choosedMonth && getFormater(dateData: dt.createdat!, month: false) == choosedYear {
-//                    self.intakes?.append(dt)
-//                }
-//            }
-//
-//            DispatchQueue.main.async {
-//                self.historyTable.reloadData()
-//            }
-//        } catch {
-//            print("Error: \(error)")
-//        }
+        var keyArray:[String] = []
+        self.intakes = [DataHistory]()
+        DispatchQueue.main.async {
+            do {
+                let request = Intake.fetchRequest() as NSFetchRequest<Intake>
+                let data = try self.context.fetch(request)
+                for dt in data {
+                    var checkdate = self.getDayFormater(dateData: dt.createdat!)
+                    var totalSugarLevel = 0.0
+                    var totalCal = 0
+                    var totalCarbs = 0.0
+                    
+                    if self.getFormater(dateData: dt.createdat!, month: true) != choosedMonth && self.getFormater(dateData: dt.createdat!, month: false) == choosedYear || self.getFormater(dateData: dt.createdat!, month: false) != choosedYear {
+                        continue
+                    } else {
+                        if keyArray.contains(checkdate) == false {
+                            for i in 0...data.count - 1 {
+                                if self.getDayFormater(dateData: data[i].createdat!) == checkdate && self.getFormater(dateData: data[i].createdat!, month: true) == self.getFormater(dateData: self.monthPicker.date, month: true) && self.getFormater(dateData: data[i].createdat!, month: false) == self.getFormater(dateData: self.monthPicker.date, month: false){
+                                    totalSugarLevel += data[i].sugar
+                                    totalCal += Int(data[i].calories)
+                                    totalCarbs += data[i].carbs
+                                }
+                            }
+
+                            let newData = DataHistory(dates: dt.createdat ?? Date(), totalSugar: totalSugarLevel, totalCal: totalCal, totalCarbs: totalCarbs)
+                            keyArray.append(checkdate)
+                            self.intakes?.append(newData)
+                        }
+                    }
+                    checkdate = ""
+                }
+                self.historyTable.reloadData()
+            } catch {
+                print("Error: \(error)")
+            }
+        }
         
         self.view.endEditing(true)
     }
@@ -138,12 +146,21 @@ class HistoryViewController: UIViewController {
             }
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destinationVC = segue.destination as? DetailHistoryViewController {
+            guard let history = sender as? DataHistory else {
+                return
+            }
+            destinationVC.dataHistory = history
+        }
+    }
 }
 
 extension HistoryViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "detailHistory", sender: self)
+        self.performSegue(withIdentifier: "detailHistory", sender: intakes?[indexPath.row])
     }
 }
 
@@ -223,51 +240,3 @@ struct DataHistory {
     let totalCal: Int
     let totalCarbs: Double
 }
-
-
-
-
-
-
-
-//
-//                for dt in data {
-//                    var checkingDate = self.getDayFormater(dateData: dt.createdat!)
-//                    if keyArray.count == 0 {
-//                        keyArray.append(checkingDate)
-//                        for i in 0...data.count - 1 {
-//                            if self.getDayFormater(dateData: data[i].createdat!) == checkingDate {
-//                                if self.intakes?.count == 0 || self.getDayFormater(dateData: self.intakes![self.intakes!.count - 1].createdat!) != checkingDate {
-//                                    self.intakes!.append(dt)
-//                                } else if self.getDayFormater(dateData: self.intakes![self.intakes!.count - 1].createdat!) == checkingDate {
-//                                    self.intakes![self.intakes!.count - 1].sugar += data[i].sugar
-//                                }
-//                            }
-//                        }
-//                    } else if keyArray.contains(checkingDate) == false {
-//                        for i in 0...data.count - 1 {
-//                            if self.getDayFormater(dateData: data[i].createdat!) == checkingDate {
-//                                if self.intakes?.count == 0 || self.getDayFormater(dateData: self.intakes![self.intakes!.count - 1].createdat!) != checkingDate {
-//                                    self.intakes!.append(dt)
-//                                } else if self.getDayFormater(dateData: self.intakes![self.intakes!.count - 1].createdat!) == checkingDate {
-//                                    self.intakes![self.intakes!.count - 1].sugar += data[i].sugar
-//                                }
-//                            }
-//                        }
-//                    }
-//                    checkingDate = ""
-//                }
-
-
-//
-//self.intakes?.append(dt)
-//keyArray.append(checkdate)
-//var firstSugar = self.intakes![self.intakes!.count - 1].sugar
-//
-//for i in 0...data.count - 1 {
-//    self.intakes![self.intakes!.count - 1].sugar += data[i].sugar
-//}
-//if self.intakes![self.intakes!.count - 1].sugar != firstSugar {
-//    self.intakes![self.intakes!.count - 1].sugar -= firstSugar
-//}
-//firstSugar = 0.0

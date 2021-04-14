@@ -19,6 +19,8 @@ class ServingSizeTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     var delegate: InputManualViewControllerDelegate?
     
+    var isiServing1 = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -29,7 +31,6 @@ class ServingSizeTableViewCell: UITableViewCell, UITextFieldDelegate {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        delegate?.servingSizeData(servingSize: sizeText.text!)
         // Configure the view for the selected state
     }
     
@@ -41,6 +42,12 @@ class ServingSizeTableViewCell: UITableViewCell, UITextFieldDelegate {
 
 extension ServingSizeTableViewCell {
     @objc func textFieldDidChange(_ textField: UITextField) {
-        delegate?.servingSizeData(servingSize: textField.text!)
+        if textField.text == ""{
+            isiServing1 = false
+        }else{
+            isiServing1 = true
+        }
+        
+        delegate?.servingSizeData(servingSize: textField.text!, isiServing: isiServing1)
     }
 }
