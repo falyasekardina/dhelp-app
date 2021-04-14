@@ -9,6 +9,8 @@ import UIKit
 
 class EditServingSizeTableViewCell: UITableViewCell, UITextFieldDelegate {
 
+    var isiServing1 = true
+    
     var dataIntakes: Intake?
     var a = ""
     
@@ -45,6 +47,12 @@ class EditServingSizeTableViewCell: UITableViewCell, UITextFieldDelegate {
 
 extension EditServingSizeTableViewCell {
     @objc func textFieldDidChange(_ textField: UITextField) {
-        delegate?.servingSizeData(servingSize: textField.text!)
+        if textField.text == "" {
+            isiServing1 = false
+        } else {
+            isiServing1 = true
+        }
+        
+        delegate?.servingSizeData(servingSize: textField.text!, isiServing: isiServing1)
     }
 }

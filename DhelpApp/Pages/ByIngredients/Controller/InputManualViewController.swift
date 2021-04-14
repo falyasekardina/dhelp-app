@@ -50,6 +50,7 @@ extension InputManualViewController: InputManualViewControllerDelegate{
         servingSizeValues = servingSize
         isiText1 = isiServing
         
+        hasil = (Int(servingSize) ?? 0) / (100)
         
         if isiText && isiText1{
             navigationItem.rightBarButtonItem?.isEnabled = true
@@ -65,6 +66,8 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
     
     var data: Ingredient?
 
+    var hasil = 0
+    
     var isiText = false
     var isiText1 = false
     
@@ -129,9 +132,9 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         let newIntake = Intake(context: self.context)
         newIntake.id = UUID()
         newIntake.name = foodName
-        newIntake.calories = calorieVal
-        newIntake.carbs = carboVal
-        newIntake.sugar = sugarVal
+        newIntake.calories = calorieVal * Int64(hasil)
+        newIntake.carbs = carboVal * Double(hasil)
+        newIntake.sugar = sugarVal * Double(hasil)
         newIntake.mealtime = mealTimeValue
         newIntake.servingsize = size ?? 0.0
         newIntake.manualsize = ""

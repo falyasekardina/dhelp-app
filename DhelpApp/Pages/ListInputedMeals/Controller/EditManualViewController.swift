@@ -50,12 +50,15 @@ class EditManualViewController: UIViewController, UIPickerViewDelegate, UIPicker
         guard let data = dataIntakes else {return}
         guard let name = data.name else {return}
         guard let size = data.manualsize else {return}
+        guard let time = data.mealtime else {return}
         
         foodNameInput.text = "\(name)"
         caloriesTxt.text = "\(dataIntakes!.calories)"
         sugarTxt.text = "\(dataIntakes!.sugar)"
         servingSizeTxt.text = "\(size)"
         carboTxt.text = "\(dataIntakes!.carbs)"
+        mealTime.text = "\(time)"
+        mealTime.textColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 0)
         
         foodNameInput.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         caloriesTxt.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
@@ -85,7 +88,7 @@ class EditManualViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func validateView(){
-        if foodNameInput.text != "" && caloriesTxt.text != "" && carboTxt.text != "" && sugarTxt.text != "" && servingSizeTxt.text != ""{
+        if foodNameInput.text != "" && caloriesTxt.text != "" && carboTxt.text != "" && sugarTxt.text != "" && servingSizeTxt.text != "" && mealTime.text != ""{
             navigationItem.rightBarButtonItem?.isEnabled = true
         } else {
             navigationItem.rightBarButtonItem?.isEnabled = false
@@ -105,6 +108,7 @@ class EditManualViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        mealTime.text = timeOption[row]
         arrayData[0] = timeOption[row]
         mealTime.resignFirstResponder()
         addFoodTable.reloadData()
@@ -143,7 +147,7 @@ class EditManualViewController: UIViewController, UIPickerViewDelegate, UIPicker
         newIntake.calories = calorieVal
         newIntake.carbs = carboVal
         newIntake.sugar = sugarVal
-        newIntake.mealtime = arrayData[0]
+        newIntake.mealtime = mealTime.text
         newIntake.servingsize = 0.0
         newIntake.manualsize = servingSizeManual
         newIntake.createdat = Date()
@@ -265,10 +269,6 @@ extension EditManualViewController: UITableViewDelegate, UITableViewDataSource{
         if section == 1
         {
             headerTitle = "Detail"
-        }
-        if section == 2
-        {
-            headerTitle = "History"
         }
         return headerTitle
     }

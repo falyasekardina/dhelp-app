@@ -23,6 +23,7 @@ class ByIngTableViewController: UITableViewController, UISearchBarDelegate {
         parseJson()
         filterData = data
         self.tableView.tableFooterView = UIView(frame: .zero)
+        tableView.isScrollEnabled = true
     }
     
     // MARK: - Table view data source

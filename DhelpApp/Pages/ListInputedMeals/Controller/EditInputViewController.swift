@@ -32,18 +32,32 @@ class SectionNameInfo{
 
 protocol EditInputViewControllerDelegate {
     func mealTimeSelected(mealTime: String)
-    func servingSizeData(servingSize: String)
+    func servingSizeData(servingSize: String, isiServing: Bool)
     func dataIn(namaData: String)
 }
 
 extension EditInputViewController: EditInputViewControllerDelegate {
     func mealTimeSelected(mealTime: String) {
         mealTimeValue = mealTime
+        cekP = true
+        
+        if cekP && cekText{
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }
     }
     
-    func servingSizeData(servingSize: String) {
+    func servingSizeData(servingSize: String, isiServing: Bool) {
         print("Serving Size Data \(servingSize)")
         servingSizeValues = servingSize
+        hasil = (Int(servingSize) ?? 0) / (100)
+        
+        cekText = isiServing
+        
+        if cekP && cekText{
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }else{
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
     }
     
     func dataIn(namaData: String)  {
@@ -57,6 +71,11 @@ extension EditInputViewController: EditInputViewControllerDelegate {
 class EditInputViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var hasil = 0
+    
+    var cekP = true
+    var cekText = true
     
     var dataIntakes: Intake?
     
@@ -133,9 +152,9 @@ class EditInputViewController: UIViewController, UITableViewDelegate, UITableVie
 
         let newIntake = self.intakes![savedata!]
         newIntake.name = foodName
-        newIntake.calories = calorieVal
-        newIntake.carbs = carboVal
-        newIntake.sugar = sugarVal
+        newIntake.calories = calorieVal * Int64(hasil)
+        newIntake.carbs = carboVal * Double(hasil)
+        newIntake.sugar = sugarVal * Double(hasil)
         newIntake.mealtime = mealTimeValue
         newIntake.servingsize = size ?? 0.0
         newIntake.manualsize = ""

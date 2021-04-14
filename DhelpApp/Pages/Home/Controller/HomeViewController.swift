@@ -296,11 +296,13 @@ class HomeViewController: UIViewController {
             let kaloriBarTotal = Float(kaloriA + kaloriB + kaloriC + kaloriD) * pembagian2
             print("\(kaloriBarTotal) ini kalori bar total")
             
+            print("\(Float(kaloriA + kaloriB + kaloriC + kaloriD))")
+            
             if kaloriBarTotal != totalKaloriProgressBar.progress{
                 totalKaloriProgressBar.progress = kaloriBarTotal
             }
             
-            totalKaloriLabel.text = "\(String(format: "%.f", (kaloriBarTotal * 1000))) kcal"
+            totalKaloriLabel.text = "\(String(format: "%.f", (Float(kaloriA + kaloriB + kaloriC + kaloriD)))) kcal"
             collectionView.reloadData()
         } catch {
             print("Error: \(error)")
