@@ -31,30 +31,58 @@ class SectionName2{
 
 protocol InputManualViewControllerDelegate {
     func mealTimeSelected(mealTime: String)
+    func servingSizeData(servingSize: String, isiServing: Bool)
 }
 
 extension InputManualViewController: InputManualViewControllerDelegate{
     func mealTimeSelected(mealTime: String) {
-        textTest.text = mealTime
+        mealTimeValue = mealTime
+        isiText = true
+        
+        if isiText && isiText1{
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }
     }
     
+    func servingSizeData(servingSize: String, isiServing: Bool) {
+        print("Serving Size Data \(servingSize)")
+        print(isiServing)
+        servingSizeValues = servingSize
+        isiText1 = isiServing
+        
+        
+        if isiText && isiText1{
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }else{
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
+    }
 }
 
 class InputManualViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
     var data: Ingredient?
 
+    var isiText = false
+    var isiText1 = false
+    
     var sectionName = [SectionName]()
     
     var sectionName2 = [SectionName2]()
     
+    var valueText : Bool = false
     
-    var namaLabae = ""
+    var mealTimeValue = ""
+    var servingSizeValues = ""
     
     @IBOutlet weak var mealTimeTable: UITableView!
     @IBOutlet weak var infoTable: UITableView!
     
     @IBOutlet weak var textTest: UITextField!
+    
+    var delegate: TransitionPageDelegate?
     
     
     override func viewDidLoad() {
@@ -81,24 +109,50 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
     }
     
-    @objc func donePressed(){
-//        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//            let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.identifier, for: indexPath) as! TableViewCell
-//            if cell.field.text == "Dinner"{
-//                textTest.text = "Makan Malam"
-//            }
-//            return cell
-//        }
+    func fetchData(){
+        if valueText == false{
+            print(valueText)
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }else{
+            print(valueText)
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }
     }
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        switch tableView.tag {
-//        case 1:
-//            return sectionName.count
-//        case 2:
-//            return 10
-//        default:
-//            return 1
-//        }
+    
+    @objc func donePressed(){
+        let foodName = data!.name
+        let calorieVal = Int64(data!.calorie)
+        let carboVal = Double(data!.carbs)
+        let sugarVal = Double(data!.sugar)
+        let size = Double(servingSizeValues) // Harus Ambil Dr XIB file
+
+        let newIntake = Intake(context: self.context)
+        newIntake.name = foodName
+        newIntake.calories = calorieVal
+        newIntake.carbs = carboVal
+        newIntake.sugar = sugarVal
+        newIntake.mealtime = mealTimeValue
+        newIntake.servingsize = size ?? 0.0
+        newIntake.manualsize = ""
+        newIntake.createdat = Date()
+        print(newIntake)
+
+        do {
+            try self.context.save()
+        } catch {
+            print("Error: \(error)")
+        }
+
+        delegate?.moveToListPage(controller: self, type: mealTimeValue)
+    }
+    
+//    // Date() => 2021-04-11 08:04:00 +0000
+//    func stringToDate(stringDate: String) -> Date {
+//        stringToDate(stringDate: "10-04-2021")
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.locale = Locale(identifier: "UTC")
+//        dateFormatter.dateFormat = "dd-MM-yyyy"
+//        return dateFormatter.date(from: stringDate)!
 //    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -123,6 +177,7 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
             if indexPath.row > 1{
                 let customCell2 = tableView.dequeueReusableCell(withIdentifier: ServingSizeTableViewCell.identifier, for: indexPath) as!
                 ServingSizeTableViewCell
+                customCell2.delegate = self
                 customCell2.textLabel?.text = "Serving Size"
                 return customCell2
             }
@@ -205,11 +260,6 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
             return 1
         }
     }
-    
-    @objc func doneTapped() {
-        
-    }
-
 }
 
 extension InputManualViewController {
@@ -219,6 +269,7 @@ extension InputManualViewController {
         self.navigationItem.title = "By Ingredients"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed))
         navigationController?.navigationBar.barTintColor = UIColor(named: "Primary")
+        navigationItem.rightBarButtonItem?.isEnabled = false
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }

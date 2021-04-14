@@ -218,11 +218,24 @@
                         <outlet property="DateOfBirth" destination="Mba-h5-3cV" id="6hd-ck-27a"/>
                         <outlet property="Sex" destination="LTQ-iC-npr" id="74S-Pc-Khl"/>
                         <outlet property="buttonSubmit" destination="Vx4-wF-imT" id="Zf7-BU-RZI"/>
+                        <outlet property="txtHeight" destination="On6-MZ-yTK" id="1nv-2G-Lcx"/>
+                        <outlet property="txtWeight" destination="toT-NA-K6Z" id="41Z-GL-0Cx"/>
+                        <segue destination="ThB-VF-1zP" kind="show" identifier="goMain" id="aov-4C-j30"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t6a-vT-oWq" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="18.840579710144929" y="93.75"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="i72-WA-gK3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="ThB-VF-1zP" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Gwi-Qp-Tc5"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iOf-fo-rxX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="630" y="-25"/>
         </scene>
         <!--Main-->
         <scene sceneID="SRm-6W-DDi">

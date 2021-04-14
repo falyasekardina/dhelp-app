@@ -7,12 +7,15 @@
 
 import UIKit
 
-
 class ByIngTableViewController: UITableViewController, UISearchBarDelegate {
+    
+    var delegate: HomeTransitionDelegate?
 
     @IBOutlet weak var searchBar: UISearchBar!
     var data: [Ingredient]?
     var filterData: [Ingredient]!
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,14 +24,14 @@ class ByIngTableViewController: UITableViewController, UISearchBarDelegate {
         filterData = data
         self.tableView.tableFooterView = UIView(frame: .zero)
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return filterData?.count ?? 0
@@ -79,6 +82,7 @@ class ByIngTableViewController: UITableViewController, UISearchBarDelegate {
         if let destinationVC = segue.destination as? InputManualViewController {
             guard let ingredient = sender as? Ingredient else { return }
             destinationVC.data = ingredient
+            destinationVC.delegate = self
         }
     }
 }
@@ -103,7 +107,15 @@ extension ByIngTableViewController {
         self.navigationController?.isNavigationBarHidden = true
         self.tabBarController?.tabBar.isHidden = false
     }
-    
-
     // Hello World
+}
+
+protocol TransitionPageDelegate {
+    func moveToListPage(controller: UIViewController, type: String)
+}
+
+extension ByIngTableViewController: TransitionPageDelegate {
+    func moveToListPage(controller: UIViewController, type: String) {
+        delegate?.moveToHomePage(controller: self, type: type)
+    }
 }
