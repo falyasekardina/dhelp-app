@@ -55,10 +55,13 @@ class HomeViewController: UIViewController {
         let byIngredients = UIAlertAction(title: "By Ingredient", style: .default) { action in
             self.performSegue(withIdentifier: "goToIngredients", sender: self)
         }
+        byIngredients.setValue(UIColor(named: "Primary"), forKey: "titleTextColor")
         let manualInput = UIAlertAction(title: "Manual Input", style: .default) { action in
             self.performSegue(withIdentifier: "goToManual", sender: self)
         }
+        manualInput.setValue(UIColor(named: "Primary"), forKey: "titleTextColor")
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        cancelAction.setValue(UIColor(named: "Primary"), forKey: "titleTextColor")
         
         optionMenu.addAction(byIngredients)
         optionMenu.addAction(manualInput)
