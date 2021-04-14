@@ -54,6 +54,7 @@ class ByManViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         arrayData[0] = timeOption[row]
+        mealTime.resignFirstResponder()
         addFoodTable.reloadData()
     }
     
