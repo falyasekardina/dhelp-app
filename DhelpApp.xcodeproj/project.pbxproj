@@ -24,6 +24,7 @@
 		039024A826162DF900BEE919 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024A726162DF900BEE919 /* Ingredient.swift */; };
 		03C727CE261DF5BA00552BFF /* ListInputMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C727CD261DF5BA00552BFF /* ListInputMealViewController.swift */; };
 		03C7FC6B261EEEA00089C710 /* ListInputMeal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C7FC6A261EEEA00089C710 /* ListInputMeal.storyboard */; };
+		03FC41F2262597D700394741 /* DetailItemHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC41F1262597D700394741 /* DetailItemHistoryViewController.swift */; };
 		84092864261C9CF3004B42DA /* InputManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84092863261C9CF3004B42DA /* InputManualViewController.swift */; };
 		84967B64261C813E002522DE /* FirstView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84967B63261C813E002522DE /* FirstView.storyboard */; };
 		84967B6D261C816B002522DE /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84967B6C261C816B002522DE /* FirstViewController.swift */; };
@@ -68,6 +69,7 @@
 		039024A726162DF900BEE919 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		03C727CD261DF5BA00552BFF /* ListInputMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInputMealViewController.swift; sourceTree = "<group>"; };
 		03C7FC6A261EEEA00089C710 /* ListInputMeal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListInputMeal.storyboard; sourceTree = "<group>"; };
+		03FC41F1262597D700394741 /* DetailItemHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemHistoryViewController.swift; sourceTree = "<group>"; };
 		84092863261C9CF3004B42DA /* InputManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManualViewController.swift; sourceTree = "<group>"; };
 		84967B63261C813E002522DE /* FirstView.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FirstView.storyboard; sourceTree = "<group>"; };
 		84967B6C261C816B002522DE /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				FC68DA2226204E0F0016665A /* CustomTableViewCell.xib */,
 				FC68DA1D261FA7290016665A /* HistoryTableViewCell.swift */,
 				FC68DA11261F345A0016665A /* HistoryViewController.swift */,
+				03FC41F1262597D700394741 /* DetailItemHistoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				03C727CE261DF5BA00552BFF /* ListInputMealViewController.swift in Sources */,
 				0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */,
 				84967B85261C87A6002522DE /* ByIngTableViewController.swift in Sources */,
+				03FC41F2262597D700394741 /* DetailItemHistoryViewController.swift in Sources */,
 				E7B9DF03261F1121004864C4 /* ByManViewController.swift in Sources */,
 				84AD16D8261D6B91003C06C9 /* ServingSizeTableViewCell.swift in Sources */,
 				FC68DA14261F345A0016665A /* DetailHistoryViewController.swift in Sources */,
