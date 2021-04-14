@@ -61,22 +61,33 @@
                     <navigationItem key="navigationItem" id="63m-hN-RP2"/>
                     <connections>
                         <outlet property="tableView" destination="wrl-SB-VL4" id="toB-4l-oMG"/>
-                        <segue destination="vcJ-bZ-jN9" kind="show" identifier="byIngredientPage" id="Oqk-ED-ijh"/>
+                        <segue destination="bTt-bu-xgo" kind="show" identifier="goToEdit" id="uGX-kV-7pd"/>
+                        <segue destination="V4r-I5-l7v" kind="show" identifier="goToManual" id="LMo-uT-hws"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TnE-SW-rAS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1121.5384615384614" y="1717.5355450236966"/>
+            <point key="canvasLocation" x="-1035" y="1718"/>
         </scene>
-        <!--ByIngredients-->
-        <scene sceneID="j0m-b2-g9A">
+        <!--EditDetail-->
+        <scene sceneID="ZxF-Dw-yps">
             <objects>
-                <viewControllerPlaceholder storyboardName="ByIngredients" id="vcJ-bZ-jN9" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="ilX-LH-uUQ"/>
+                <viewControllerPlaceholder storyboardName="EditDetail" id="bTt-bu-xgo" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Pbh-zl-Swb"/>
                 </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6LW-aC-kYt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZKc-LG-FJg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-472" y="1718"/>
+            <point key="canvasLocation" x="-135.38461538461539" y="1717.5355450236966"/>
+        </scene>
+        <!--EditManual-->
+        <scene sceneID="WUO-dj-NjJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="EditManual" id="V4r-I5-l7v" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QRx-LI-xEE"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BpD-KT-e2R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="95" y="1317"/>
         </scene>
     </scenes>
     <resources>

@@ -33,6 +33,7 @@ class ByManViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         addFoodTable.dataSource = self
         mealTime.inputView = timePicker
         timePicker.delegate = self
+        addFoodTable.isScrollEnabled = false
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -60,6 +61,7 @@ class ByManViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
         let servingSizeManual = servingSizeTxt.text ?? ""
 
         let newIntake = Intake(context: self.context)
+        newIntake.id = UUID()
         newIntake.name = foodNameInput.text
         newIntake.calories = calorieVal
         newIntake.carbs = carboVal
