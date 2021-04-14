@@ -281,6 +281,9 @@
                         <outlet property="collectionView" destination="Be2-LT-BSQ" id="O0d-VP-DUZ"/>
                         <outlet property="dateLbl" destination="GAc-mL-OmW" id="FU6-Id-e6w"/>
                         <outlet property="informationView" destination="z6F-FW-JHm" id="ggl-Yk-YWN"/>
+                        <outlet property="lblAlert" destination="IaO-ph-7Y0" id="51s-NQ-mo1"/>
+                        <outlet property="lblGula" destination="uW9-Vc-GXc" id="ncj-aO-SCC"/>
+                        <outlet property="lblKalori" destination="1at-pl-gvL" id="9fa-tF-12d"/>
                         <outlet property="totalKaloriLabel" destination="Pza-qz-Fno" id="tzG-TA-3lb"/>
                         <outlet property="totalKaloriProgressBar" destination="Gbo-sb-Ddy" id="onn-64-4ia"/>
                         <outlet property="totalSugarConsumsionlbl" destination="hKm-Uk-LCC" id="1Fc-or-iyc"/>

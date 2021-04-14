@@ -22,6 +22,7 @@
 		039024A826162DF900BEE919 /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 039024A726162DF900BEE919 /* Ingredient.swift */; };
 		03C727CE261DF5BA00552BFF /* ListInputMealViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03C727CD261DF5BA00552BFF /* ListInputMealViewController.swift */; };
 		03C7FC6B261EEEA00089C710 /* ListInputMeal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 03C7FC6A261EEEA00089C710 /* ListInputMeal.storyboard */; };
+		03FC41F2262597D700394741 /* DetailItemHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FC41F1262597D700394741 /* DetailItemHistoryViewController.swift */; };
 		84092864261C9CF3004B42DA /* InputManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84092863261C9CF3004B42DA /* InputManualViewController.swift */; };
 		841E02592625880E00B58615 /* EditDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 841E02582625880E00B58615 /* EditDetail.storyboard */; };
 		841E025E2625A5D900B58615 /* Intake+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E025C2625A5D900B58615 /* Intake+CoreDataClass.swift */; };
@@ -47,6 +48,7 @@
 		84BD06CA2626AC0E00A0975D /* EditServingSizeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BD06C92626AC0E00A0975D /* EditServingSizeTableViewCell.swift */; };
 		E019B341261F0C120042F432 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E019B340261F0C120042F432 /* ProfileViewController.swift */; };
 		E019B344261F0C210042F432 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E019B343261F0C210042F432 /* Profile.storyboard */; };
+		E709FF672624A03800992A0A /* OnBoarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E709FF662624A03800992A0A /* OnBoarding.storyboard */; };
 		E7B9DF03261F1121004864C4 /* ByManViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B9DF02261F1121004864C4 /* ByManViewController.swift */; };
 		E7B9DF06261F1128004864C4 /* ByManual.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7B9DF05261F1128004864C4 /* ByManual.storyboard */; };
 		FC68DA13261F345A0016665A /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC68DA11261F345A0016665A /* HistoryViewController.swift */; };
@@ -76,6 +78,7 @@
 		039024A726162DF900BEE919 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		03C727CD261DF5BA00552BFF /* ListInputMealViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListInputMealViewController.swift; sourceTree = "<group>"; };
 		03C7FC6A261EEEA00089C710 /* ListInputMeal.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ListInputMeal.storyboard; sourceTree = "<group>"; };
+		03FC41F1262597D700394741 /* DetailItemHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailItemHistoryViewController.swift; sourceTree = "<group>"; };
 		84092863261C9CF3004B42DA /* InputManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputManualViewController.swift; sourceTree = "<group>"; };
 		841E02582625880E00B58615 /* EditDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditDetail.storyboard; sourceTree = "<group>"; };
 		841E025C2625A5D900B58615 /* Intake+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Intake+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -101,6 +104,7 @@
 		84BD06C92626AC0E00A0975D /* EditServingSizeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditServingSizeTableViewCell.swift; sourceTree = "<group>"; };
 		E019B340261F0C120042F432 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		E019B343261F0C210042F432 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		E709FF662624A03800992A0A /* OnBoarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnBoarding.storyboard; sourceTree = "<group>"; };
 		E7B9DF02261F1121004864C4 /* ByManViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByManViewController.swift; sourceTree = "<group>"; };
 		E7B9DF05261F1128004864C4 /* ByManual.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ByManual.storyboard; sourceTree = "<group>"; };
 		FC68DA11261F345A0016665A /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				FC68DA2226204E0F0016665A /* CustomTableViewCell.xib */,
 				FC68DA1D261FA7290016665A /* HistoryTableViewCell.swift */,
 				FC68DA11261F345A0016665A /* HistoryViewController.swift */,
+				03FC41F1262597D700394741 /* DetailItemHistoryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 				0390247F2616268C00BEE919 /* AppDelegate.swift */,
 				039024812616268C00BEE919 /* SceneDelegate.swift */,
 				039024852616268C00BEE919 /* Main.storyboard */,
+				E709FF662624A03800992A0A /* OnBoarding.storyboard */,
 				0390248B2616268D00BEE919 /* Assets.xcassets */,
 				0390248D2616268D00BEE919 /* LaunchScreen.storyboard */,
 				039024902616268D00BEE919 /* Info.plist */,
@@ -483,6 +489,7 @@
 				FC68DA2426204E0F0016665A /* CustomTableViewCell.xib in Resources */,
 				846DB023262496A200C7EA87 /* EditServingSizeTableViewCell.xib in Resources */,
 				E019B344261F0C210042F432 /* Profile.storyboard in Resources */,
+				E709FF672624A03800992A0A /* OnBoarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +519,7 @@
 				03C727CE261DF5BA00552BFF /* ListInputMealViewController.swift in Sources */,
 				0341AE432619BB3300FFC68E /* DailyInTake.swift in Sources */,
 				84967B85261C87A6002522DE /* ByIngTableViewController.swift in Sources */,
+				03FC41F2262597D700394741 /* DetailItemHistoryViewController.swift in Sources */,
 				E7B9DF03261F1121004864C4 /* ByManViewController.swift in Sources */,
 				846DB00726248CE400C7EA87 /* EditInputViewController.swift in Sources */,
 				84AD16D8261D6B91003C06C9 /* ServingSizeTableViewCell.swift in Sources */,
@@ -667,7 +675,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2FT28A9D5B;
+				DEVELOPMENT_TEAM = WVFW5SK35J;
 				INFOPLIST_FILE = DhelpApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -31,21 +31,33 @@ class SectionName2{
 
 protocol InputManualViewControllerDelegate {
     func mealTimeSelected(mealTime: String)
-    func servingSizeData(servingSize: String)
+    func servingSizeData(servingSize: String, isiServing: Bool)
 }
 
-extension InputManualViewController: InputManualViewControllerDelegate {
+extension InputManualViewController: InputManualViewControllerDelegate{
     func mealTimeSelected(mealTime: String) {
         mealTimeValue = mealTime
+        isiText = true
+        
+        if isiText && isiText1{
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }
     }
     
-    func servingSizeData(servingSize: String) {
+    func servingSizeData(servingSize: String, isiServing: Bool) {
         print("Serving Size Data \(servingSize)")
+        print(isiServing)
         servingSizeValues = servingSize
+        isiText1 = isiServing
+        
+        
+        if isiText && isiText1{
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }else{
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }
     }
 }
-
-
 
 class InputManualViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -53,10 +65,14 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
     
     var data: Ingredient?
 
+    var isiText = false
+    var isiText1 = false
+    
     var sectionName = [SectionName]()
     
     var sectionName2 = [SectionName2]()
     
+    var valueText : Bool = false
     
     var mealTimeValue = ""
     var servingSizeValues = ""
@@ -91,6 +107,16 @@ class InputManualViewController: UIViewController, UITableViewDelegate, UITableV
         infoTable.register(LabelTableViewCell.nib(), forCellReuseIdentifier: LabelTableViewCell.identifier)
         infoTable.register(ServingSizeTableViewCell.nib(), forCellReuseIdentifier: ServingSizeTableViewCell.identifier)
         // Do any additional setup after loading the view.
+    }
+    
+    func fetchData(){
+        if valueText == false{
+            print(valueText)
+            navigationItem.rightBarButtonItem?.isEnabled = false
+        }else{
+            print(valueText)
+            navigationItem.rightBarButtonItem?.isEnabled = true
+        }
     }
     
     @objc func donePressed(){
@@ -244,6 +270,7 @@ extension InputManualViewController {
         self.navigationItem.title = "By Ingredients"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(donePressed))
         navigationController?.navigationBar.barTintColor = UIColor(named: "Primary")
+        navigationItem.rightBarButtonItem?.isEnabled = false
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
