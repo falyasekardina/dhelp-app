@@ -40,6 +40,10 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var alertView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var lblKalori: UILabel!
+    @IBOutlet weak var lblGula: UILabel!
+    @IBOutlet weak var lblAlert: UILabel!
+    
     @IBOutlet weak var totalSugarProgressBar: UIProgressView!
     @IBOutlet weak var totalSugarConsumsionlbl: UILabel!
     
@@ -67,6 +71,11 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         itungKeperluan()
+        
+        let defaults = UserDefaults.standard
+        let gula = defaults.object(forKey: "dataGula")
+        let kalori = defaults.object(forKey: "dataKalori")
+        
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         setupInformationView()
@@ -110,9 +119,9 @@ class HomeViewController: UIViewController {
         let endDate = dateFormater.date(from: tanggalSekarang)
         var diff = Calendar.current.dateComponents([.year], from: startDate!, to: endDate!).year
         
-        print(diff)
         
-        if diff! >= 4 && diff! <= 6{
+        
+        if diff! >= 0 && diff! <= 6{
             gula = 19
         }else if diff! >= 7 && diff! <= 10{
             gula = 24
@@ -177,7 +186,7 @@ class HomeViewController: UIViewController {
         let i = c * h
         kalori = c + e + g - i
         print(kalori)
-        defaults.setValue(kalori, forKey: "dataKalori")
+        defaults.setValue(Int(kalori), forKey: "dataKalori")
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -210,6 +219,11 @@ class HomeViewController: UIViewController {
     
     func fetchData() {
         do {
+            itungKeperluan()
+            
+            lblGula.text = "\(gula) gr"
+            lblKalori.text = "\(Int(kalori)) kcal"
+            
             let request = Intake.fetchRequest() as NSFetchRequest<Intake>
             self.intakes = try context.fetch(request)
             //sugar
@@ -243,33 +257,50 @@ class HomeViewController: UIViewController {
             }
             
             //sugar
-            self.dailyInTakes[0].total = "\(String(format: "%.2f", sugarLevelA)) gr"
-            self.dailyInTakes[1].total = "\(String(format: "%.2f", sugarLevelB)) gr"
-            self.dailyInTakes[2].total = "\(String(format: "%.2f", sugarLevelC)) gr"
-            self.dailyInTakes[3].total = "\(String(format: "%.2f", sugarLevelD)) gr"
+            self.dailyInTakes[0].total = "\(String(format: "%.1f", sugarLevelA)) gr"
+            self.dailyInTakes[1].total = "\(String(format: "%.1f", sugarLevelB)) gr"
+            self.dailyInTakes[2].total = "\(String(format: "%.1f", sugarLevelC)) gr"
+            self.dailyInTakes[3].total = "\(String(format: "%.1f", sugarLevelD)) gr"
             
             //kalori
             
             // Update Progress bar Value
-            let sugarBarTotal = Float((sugarLevelA + sugarLevelB + sugarLevelC + sugarLevelD) * 0.02)
+            let pembagian1 = 1 / gula
+            
+            let sugarBarTotal = Float(sugarLevelA + sugarLevelB + sugarLevelC + sugarLevelD) * pembagian1
+            
             if sugarBarTotal != totalSugarProgressBar.progress {
                 totalSugarProgressBar.progress = sugarBarTotal
                 print("\(sugarBarTotal)")
-                if sugarBarTotal > 0.80{
+                if sugarBarTotal >= 0.80 && sugarBarTotal < 0.99{
                     alertView.isHidden = false
+                    lblAlert.text = "Sugar consumption is almost over the limit"
+                    totalSugarProgressBar.progressTintColor = #colorLiteral(red: 0.00911075063, green: 0.4539698958, blue: 0.4588753581, alpha: 1)
+                }else if sugarBarTotal >= 1{
+                    alertView.isHidden = false
+                    lblAlert.text = "Sugar consumption has reached the limit"
+                    totalSugarProgressBar.progressTintColor = #colorLiteral(red: 1, green: 0.4610788226, blue: 0.4808561206, alpha: 1)
+                }else if sugarBarTotal < 0.8{
+                    alertView.isHidden = true
+                    totalSugarProgressBar.progressTintColor = #colorLiteral(red: 0, green: 0.4552916884, blue: 0.4594951868, alpha: 1)
                 }
             }
             
-            totalSugarConsumsionlbl.text = "\(String(format: "%.f", (sugarLevelA + sugarLevelB + sugarLevelC + sugarLevelD))) gr"
+            totalSugarConsumsionlbl.text = "\(String(format: "%.1f", (sugarLevelA + sugarLevelB + sugarLevelC + sugarLevelD))) gr"
             
             print("\(kaloriA + kaloriB + kaloriC + kaloriD)")
             // Kalori
-            let kaloriBarTotal = Float((kaloriA + kaloriB + kaloriC + kaloriD)) * 0.001
-            print("\(kaloriBarTotal)")
+            let pembagian2 = 1 / kalori
+            print("\(pembagian2) ini hasil pembagian2")
+            
+            let kaloriBarTotal = Float(kaloriA + kaloriB + kaloriC + kaloriD) * pembagian2
+            print("\(kaloriBarTotal) ini kalori bar total")
+            
             if kaloriBarTotal != totalKaloriProgressBar.progress{
                 totalKaloriProgressBar.progress = kaloriBarTotal
             }
-            totalKaloriLabel.text = "\(String(format: "%.f", (kaloriBarTotal * 1000))) kcl"
+            
+            totalKaloriLabel.text = "\(String(format: "%.f", (kaloriBarTotal * 1000))) kcal"
             collectionView.reloadData()
         } catch {
             print("Error: \(error)")

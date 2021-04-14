@@ -42,18 +42,6 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //
-        //        sesi = UserDefaults.standard.object(forKey: "regis") as? Bool
-        //
-        //        print(sesi)
-        //
-        //        if sesi == true{
-        //            self.window = UIWindow(frame: UIScreen.main.bounds)
-        //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        //            let controller = storyboard.instantiateViewController(withIdentifier: "iniMainHome")
-        //
-        //        }
-        
         //activity picker
         levelPicker.delegate = self
         levelPicker.dataSource = self
@@ -74,6 +62,26 @@ class FirstViewController: UIViewController {
         
         //button
         buttonSubmit.layer.cornerRadius = 25.0
+        
+        txtWeight.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        txtHeight.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        validateView()
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        validateView()
+    }
+    
+    func validateView(){
+        if DateOfBirth.text != "" && Sex.text != "" && ActivityLevel.text != "" && txtWeight.text != "" && txtHeight.text != ""{
+            buttonSubmit.isEnabled = true
+            buttonSubmit.backgroundColor = UIColor.init(named: "Primary")
+        }else{
+            buttonSubmit.isEnabled = false
+            buttonSubmit.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        }
     }
     
     @IBAction func submitButton(_ sender: Any) {
@@ -122,6 +130,7 @@ class FirstViewController: UIViewController {
         
         self.DateOfBirth.text = dateFormatter.string(from: datePicker.date)
         self.view.endEditing(true)
+        validateView()
         dataDob = dateFormatter.string(from: datePicker.date)
     }
 
@@ -160,10 +169,12 @@ extension FirstViewController: UIPickerViewDelegate, UIPickerViewDataSource{
         case 1:
             Sex.text = sexOption[row]
             dataGender = sexOption[row]
+            validateView()
             Sex.resignFirstResponder()
         case 2:
             ActivityLevel.text = levelOption[row]
             dataAct = levelOption[row]
+            validateView()
             ActivityLevel.resignFirstResponder()
         default:
             return

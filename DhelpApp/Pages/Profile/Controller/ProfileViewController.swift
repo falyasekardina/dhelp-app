@@ -66,6 +66,24 @@ class ProfileViewController: UIViewController{
         
         btnSex.inputView = sexPicker
         btnLevel.inputView = levelPicker
+        
+        txtWeight.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+        
+        txtHeight.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        validateView()
+    }
+    
+    func validateView(){
+        if tableData == "edit"{
+            if txtWeight.text != "" && txtHeight.text != ""{
+                btnEdit.isEnabled = true
+            }else{
+                btnEdit.isEnabled = false
+            }
+        }
     }
     
     func loadDataUser(){
@@ -137,6 +155,10 @@ class ProfileViewController: UIViewController{
             btnDob.isHidden = true
             btnSex.isHidden = true
             btnLevel.isHidden = true
+            
+            btnDob.resignFirstResponder()
+            btnSex.resignFirstResponder()
+            btnLevel.resignFirstResponder()
             
             let defaults = UserDefaults.standard
             defaults.setValue(dob, forKey: "dataDob")
