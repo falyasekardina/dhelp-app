@@ -11,5 +11,5 @@ import UIKit
 struct DailyInTake {
     let title: String
     let mealLogo: UIImage
-    let total: String
+    var total: String
 }

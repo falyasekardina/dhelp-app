@@ -9,11 +9,17 @@ import UIKit
 
 class TableViewCell: UITableViewCell, UITextFieldDelegate {
     
+    var dataPicker = ""
+    
     let timePicker = UIPickerView()
     
     let timeOption = ["Breakfast","Lunch","Dinner","Snack"]
 
     static let identifier = "TableViewCell"
+    
+    var Makan = ""
+    
+    var delegate: InputManualViewControllerDelegate?
     
     static func nib() -> UINib {
         return UINib(nibName: "TableViewCell", bundle: nil)
@@ -24,14 +30,12 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         field.delegate = self
-        
         timePicker.delegate = self
         timePicker.dataSource = self
-        
         field.inputView = timePicker
         // Initialization code
     }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         print("\(textField.text ?? "")")
         return true
@@ -39,9 +43,8 @@ class TableViewCell: UITableViewCell, UITextFieldDelegate {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
     }
-    
 }
 
 extension TableViewCell: UIPickerViewDelegate, UIPickerViewDataSource{
@@ -60,7 +63,13 @@ extension TableViewCell: UIPickerViewDelegate, UIPickerViewDataSource{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         field.text = timeOption[row]
+        
         field.resignFirstResponder()
+        
+        delegate?.mealTimeSelected(mealTime: timeOption[row])
+//        if field.text == "Dinner"{
+//            field.text = "Dinner"
+//        }
     }
     
 }

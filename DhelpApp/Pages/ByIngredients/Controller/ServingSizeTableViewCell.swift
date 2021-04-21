@@ -17,10 +17,15 @@ class ServingSizeTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     @IBOutlet weak var sizeText: UITextField!
     
+    var delegate: InputManualViewControllerDelegate?
+    
+    var isiServing1 = false
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
         sizeText.delegate = self
+        sizeText.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
         // Initialization code
     }
 
@@ -33,5 +38,16 @@ class ServingSizeTableViewCell: UITableViewCell, UITextFieldDelegate {
         print("\(textField.text ?? "")")
         return true
     }
-    
+}
+
+extension ServingSizeTableViewCell {
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if textField.text == ""{
+            isiServing1 = false
+        }else{
+            isiServing1 = true
+        }
+        
+        delegate?.servingSizeData(servingSize: textField.text!, isiServing: isiServing1)
+    }
 }

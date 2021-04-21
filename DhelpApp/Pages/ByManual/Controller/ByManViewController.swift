@@ -6,25 +6,39 @@
 //
 
 import UIKit
+import CoreData
 
 class ByManViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var addFoodTable: UITableView!
     @IBOutlet weak var mealTime: UITextField!
     @IBOutlet weak var foodNameInput: UITextField!
+    @IBOutlet weak var caloriesTxt: UITextField!
+    @IBOutlet weak var carboTxt: UITextField!
+    @IBOutlet weak var sugarTxt: UITextField!
+    @IBOutlet weak var servingSizeTxt: UITextField!
+    
+//    var delegate: TransitionPage?
     
     var timePicker = UIPickerView()
-       
+    
     let timeOption = ["Breakfast","Lunch","Dinner","Snack"]
     
-    var arrayData  = ["", "", "", "", "", ""]
-
+    var arrayData  = [""]
+    
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    
+    var intakes: [Intake]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        addFoodTable.isScrollEnabled = false
         addFoodTable.delegate = self
         addFoodTable.dataSource = self
         mealTime.inputView = timePicker
         timePicker.delegate = self
+        addFoodTable.isScrollEnabled = false
+        fetchData()
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -41,9 +55,36 @@ class ByManViewController: UIViewController, UIPickerViewDelegate, UIPickerViewD
 
     func pickerView( _ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         arrayData[0] = timeOption[row]
+        mealTime.resignFirstResponder()
         addFoodTable.reloadData()
     }
+    
+    @objc func doneTapped() {
+        let calorieVal = Int64(caloriesTxt.text ?? "") ?? 0
+        let carboVal = Double(carboTxt.text ?? "") ?? 0.0
+        let sugarVal = Double(sugarTxt.text ?? "") ?? 0.0
+        let servingSizeManual = servingSizeTxt.text ?? ""
 
+        let newIntake = Intake(context: self.context)
+        newIntake.id = UUID()
+        newIntake.name = foodNameInput.text
+        newIntake.calories = calorieVal
+        newIntake.carbs = carboVal
+        newIntake.sugar = sugarVal
+        newIntake.mealtime = arrayData[0]
+        newIntake.servingsize = 0.0
+        newIntake.manualsize = servingSizeManual
+        newIntake.createdat = Date()
+
+        do {
+            try self.context.save()
+        } catch {
+            print("Error: \(error)")
+        }
+        
+//        delegate?.moveToListPage(mealType: arrayData[0])
+        self.navigationController?.popToRootViewController(animated: true)
+    }
 }
 
 extension ByManViewController: UITableViewDelegate, UITableViewDataSource {
@@ -69,7 +110,7 @@ extension ByManViewController: UITableViewDelegate, UITableViewDataSource {
         }
         else if section == 2
         {
-            sectionIndex = 2
+            sectionIndex = intakes?.count ?? 0
         }
         return sectionIndex
     }
@@ -78,7 +119,6 @@ extension ByManViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             let cellTime = tableView.dequeueReusableCell(withIdentifier: "time", for: indexPath)
             cellTime.textLabel?.text = "Time"
-            print(arrayData[0])
             if arrayData[0] == "" {
                 cellTime.detailTextLabel?.text = "Required"
             }
@@ -108,10 +148,24 @@ extension ByManViewController: UITableViewDelegate, UITableViewDataSource {
             }
             
             return cellDetail
+        } else if indexPath.section == 2 {
+            let cellDetail = tableView.dequeueReusableCell(withIdentifier: "historyInput", for: indexPath)
+            cellDetail.textLabel?.text = intakes?[indexPath.row].name
+            cellDetail.detailTextLabel?.text = "\(intakes![indexPath.row].sugar) gr"
+            return cellDetail
         }
         
         return UITableViewCell()
-        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            foodNameInput.text = intakes![indexPath.row].name
+            caloriesTxt.text = "\(Int(intakes![indexPath.row].calories))"
+            carboTxt.text = "\(intakes![indexPath.row].carbs)"
+            sugarTxt.text = "\(intakes![indexPath.row].sugar)"
+            servingSizeTxt.text = intakes![indexPath.row].manualsize
+        }
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -136,6 +190,26 @@ extension ByManViewController: UITableViewDelegate, UITableViewDataSource {
     {
         return 3
     }
+    
+    func fetchData() {
+        self.intakes = [Intake]()
+        do {
+            let request = Intake.fetchRequest() as NSFetchRequest<Intake>
+            let data = try context.fetch(request)
+            
+            for dt in data {
+                if dt.manualsize != "" {
+                    intakes?.append(dt)
+                }
+            }
+            
+            DispatchQueue.main.async {
+                self.addFoodTable.reloadData()
+            }
+        } catch {
+            print("Error: \(error)")
+        }
+    }
 }
 
 extension ByManViewController {
@@ -148,7 +222,7 @@ extension ByManViewController {
         self.navigationController?.isNavigationBarHidden = false
         self.tabBarController?.tabBar.isHidden = true
         self.navigationItem.title = "Add Food"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
         navigationController?.navigationBar.barTintColor = UIColor(named: "Primary")
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]

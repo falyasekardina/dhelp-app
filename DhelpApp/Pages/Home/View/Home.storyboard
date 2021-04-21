@@ -190,7 +190,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpp-YU-stn">
+                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gpp-YU-stn">
                                         <rect key="frame" x="19" y="174" width="320" height="34"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sugar Consumption is almost over the limit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaO-ph-7Y0">
@@ -281,6 +281,13 @@
                         <outlet property="collectionView" destination="Be2-LT-BSQ" id="O0d-VP-DUZ"/>
                         <outlet property="dateLbl" destination="GAc-mL-OmW" id="FU6-Id-e6w"/>
                         <outlet property="informationView" destination="z6F-FW-JHm" id="ggl-Yk-YWN"/>
+                        <outlet property="lblAlert" destination="IaO-ph-7Y0" id="51s-NQ-mo1"/>
+                        <outlet property="lblGula" destination="uW9-Vc-GXc" id="ncj-aO-SCC"/>
+                        <outlet property="lblKalori" destination="1at-pl-gvL" id="9fa-tF-12d"/>
+                        <outlet property="totalKaloriLabel" destination="Pza-qz-Fno" id="tzG-TA-3lb"/>
+                        <outlet property="totalKaloriProgressBar" destination="Gbo-sb-Ddy" id="onn-64-4ia"/>
+                        <outlet property="totalSugarConsumsionlbl" destination="hKm-Uk-LCC" id="1Fc-or-iyc"/>
+                        <outlet property="totalSugarProgressBar" destination="Fic-Dp-qT9" id="LiH-8z-eX2"/>
                         <segue destination="bh7-3H-O1f" kind="show" identifier="ListInputMeal" id="L1r-o1-oxb"/>
                         <segue destination="vJa-MF-Fta" kind="show" identifier="goToManual" id="OoL-35-MHU"/>
                     </connections>
